@@ -1,0 +1,35 @@
+#calendar {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#calendar li {
+    float: left;
+    width: 13%;
+    margin: 0 1% 1% 0;
+}
+
+#calendar li span {
+    display: block;
+    padding: 5px;
+    background-color: #eee;
+}
+
+#calendar li.selected span {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#calendar li.today span {
+    background-color: #33f;
+    color: white;
+}
+
+#calendar li.offset-0 { margin-left: 0%; }
+#calendar li.offset-1 { margin-left: 14%; }
+#calendar li.offset-2 { margin-left: 28%; }
+#calendar li.offset-3 { margin-left: 42%; }
+#calendar li.offset-4 { margin-left: 56%; }
+#calendar li.offset-5 { margin-left: 70%; }
+#calendar li.offset-6 { margin-left: 84%; }

@@ -1,0 +1,26 @@
+{
+  "name": "calendar_practice",
+  "version": "1.0.0",
+  "description": "practicing how to schedule events for a user",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jacksondonovan/calendar_practice.git"
+  },
+  "author": "Jackson Donovan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jacksondonovan/calendar_practice/issues"
+  },
+  "homepage": "https://github.com/jacksondonovan/calendar_practice#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "moment": "^2.19.1",
+    "path": "^0.12.7"
+  }
+}
