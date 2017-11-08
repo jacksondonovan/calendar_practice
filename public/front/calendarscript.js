@@ -1,4 +1,5 @@
 console.log('hello jackson');
+const moment = require('moment')
 function Calendar(elem, date) {
     var today = moment(date),
         first = moment(today).date(1);
