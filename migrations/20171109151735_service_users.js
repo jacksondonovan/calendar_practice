@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments()
     table.string('company_name')
     table.integer('employee_count')
-    table.url('company_website')
+    table.string('company_website')
     table.string('address')
     table.string('email')
     table.string('password')

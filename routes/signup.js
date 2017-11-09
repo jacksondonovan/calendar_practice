@@ -36,8 +36,10 @@ router.post('/service_provider',(req,res)=>{
       .then((hash)=>{
         req.body.password = hash
         console.log(hash);
-        linkQuery.addServiceProvider().where('email',req.body.email).first().then(function(sp){
-          res.redirect('/profile/service_provider/' + sp.email)
+        linkQuery.addServiceProvider(req.body).then(function(){
+          linkQuery.getServiceProvider().where('email',req.body.email).first().then(function(sp){
+            res.redirect('/profile/service_provider/' + sp.email)
+          })
         })
       })
     }
