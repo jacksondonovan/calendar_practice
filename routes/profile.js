@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const linkQuery = require('../db/linkQuery')
+const bcrypt = require('bcryptjs')
+const cookieSession = require('cookie-session')
+const key = process.env.COOKIE_KEY || 'asdfasdf'
 
 //mounted at /profile
 router.get('/property_owner/:email',(req,res)=>{
@@ -10,18 +13,63 @@ router.get('/property_owner/:email',(req,res)=>{
   })
 })
 
-// router.post('/',(req,res)=>{
-//   linkQuery.getUsers().where('username',req.body.username).first().then((user)=>{
-//     console.log(user);
-//     if(user){
-//       res.redirect('/')
-//     } else {
-//       linkQuery.addUser(req.body).then((data)=>{
-//         res.redirect('/profile/' + req.body.username)
-//       })
-//     }
-//   })
-// })
+router.post('/property_owner',(req,res)=>{
+  linkQuery.getPropertyOwner().where('email',req.body.email).first().then((user)=>{
+    if(user){
+      bcrypt.compare(
+        req.body.password, user.password
+      ).then((data)=>{
+        if(data){
+          req.session.id = user.id
+          res.redirect('/profile/property_owner/' + user.email)
+        } else {
+          res.redirect('/')
+        }
+      })
+    }
+  })
+})
+
+router.post('/teacher', function(req, res, next) {
+  knex('teachers').select().where({
+    uname: req.body.uname
+  }).first()
+  .then(function(user){
+    console.log(user);
+    if(user){
+      bcrypt.compare(
+        req.body.pword, user.pword
+      ).then(function(data){
+        if(data){
+          req.session.id = user.id
+          res.redirect('/profile/teacher/' + user.uname)
+        } else {
+          res.redirect('/no/can/do/')
+        }
+      })
+    } else {
+      res.redirect('/invalid/creds')
+    }
+  })
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 router.get('/:first_name',(req,res)=>{
   linkQuery.getPropertyOwner().where('first_name',req.params.first_name).first().then((data)=>{
