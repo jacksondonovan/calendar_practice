@@ -13,7 +13,7 @@ router.get('/property_owner/:email',(req,res)=>{
   })
 })
 
-router.post('/property_owner',(req,res)=>{
+router.post('/property_owner/:email',(req,res)=>{
   linkQuery.getPropertyOwner().where('email',req.body.email).first().then((user)=>{
     if(user){
       bcrypt.compare(
@@ -30,28 +30,12 @@ router.post('/property_owner',(req,res)=>{
   })
 })
 
-router.post('/teacher', function(req, res, next) {
-  knex('teachers').select().where({
-    uname: req.body.uname
-  }).first()
-  .then(function(user){
-    console.log(user);
-    if(user){
-      bcrypt.compare(
-        req.body.pword, user.pword
-      ).then(function(data){
-        if(data){
-          req.session.id = user.id
-          res.redirect('/profile/teacher/' + user.uname)
-        } else {
-          res.redirect('/no/can/do/')
-        }
-      })
-    } else {
-      res.redirect('/invalid/creds')
-    }
+router.get('/service_provider',(req,res)=>{
+  linkQuery.getServiceProvider().where('email',req.params.email).first().then((newdata)=>{
+    console.log(newdata);
+    res.render('service_provider_profile',{newestdata:newdata.company_name})
   })
-});
+})
 
 
 
