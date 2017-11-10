@@ -1,9 +1,16 @@
 .tallwell{
-  height:210px;
+  height:220px;
 }
 .tallwell button{
   width:90%;
 }
 .leftbound{
   margin-right: 30px;
+}
+
+.imgsame img{
+  height:100px;
+}
+.shorter{
+  height:45px;
 }
