@@ -26,4 +26,24 @@ router.post('/property_owner',(req,res)=>{
   })
 })
 
+router.post('/service_provider',(req,res)=>{
+  linkQuery.getServiceProvider().where('email',req.body.email).first().then((spuser)=>{
+    if(spuser){
+      console.log(spuser);
+      bcrypt.compare(
+        req.body.password, spuser.password
+      ).then(function(bool){
+        if(bool){
+          req.session.id = spuser.id
+          res.redirect('/profile/service_provider/' + spuser.email)
+        } else {
+          res.redirect('/')
+        }
+      })
+    } else {
+      res.redirect('/')
+    }
+  })
+})
+
 module.exports = router;
