@@ -10,6 +10,7 @@ var propertyOwner = require('./routes/property_owner_signup.js')
 var serviceProvider = require('./routes/service_provider_signup.js')
 var profile = require('./routes/profile.js')
 var signUp = require('./routes/signup.js')
+var logIn = require('./routes/login.js')
 
 app.set('view engine','hbs')
 
@@ -30,6 +31,7 @@ app.use('/property_owner_signup',propertyOwner)
 app.use('/service_provider_signup',serviceProvider)
 app.use('/profile',profile)
 app.use('/signup',signUp)
+app.use('/login',logIn)
 
 app.get('/',(req,res)=>{
   res.render('index')
