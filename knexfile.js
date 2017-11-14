@@ -6,8 +6,8 @@ module.exports = {
     client: 'pg',
     connection: 'postgres://localhost/traderj'
   },
-  // production: {
-  //   client: 'postgresql',
-  //   connection: 'postgres://jyafkxqkqguzze:25724566de7a6191179d71197f378fe736f4584dd35f93e38a66cc38f2e82c46@ec2-50-19-105-113.compute-1.amazonaws.com:5432/d4abv9i3sgth9a'
-  // }
+  production: {
+    client: 'postgresql',
+    connection: 'postgres://frqmbankhxqurd:8f38469926af0c03b767a000ab3728dcf71a64590c9499d56b99ae2f9d2a2834@ec2-54-225-70-53.compute-1.amazonaws.com:5432/d4qhakkmfua1to'
+  }
 }
