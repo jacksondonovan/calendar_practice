@@ -44,7 +44,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="#">Company Name</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -53,33 +53,69 @@
         <li><a href="#">Booking Log</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/"><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
+        <li><a href="/"> Log Out</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="container text-center">
-  <h3>{{newestdata}}</h3><br>
+<div class="container">
   <div class="row">
-    <div class="col-sm-4">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Current Project</p>
+    <div class="col-sm-2 leftbound" align="left">
+      <img style="height:120px;widht:80px;" src="/images/tjlogo.png"  >
     </div>
-    <div class="col-sm-4">
-      <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-      <p>Project 2</p>
-    </div>
-    <div class="col-sm-4">
-      <div class="well">
-       <p>Some text..</p>
+    <div class="col-sm-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><h1>Bookings To Date</h1></div>
+
+        <div class="panel-body">{{thedata}}</div>
       </div>
-      <div class="well">
-       <p>Some text..</p>
+    </div>
+    <div class="col-sm-3">
+      <div class="panel panel-primary">
+
+        <div class="panel-heading"> <h1>Booking Revenue</h1></div>
+        <div class="panel-body">Number</div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="panel panel-primary">
+
+        <div class="panel-heading"><h1>Upcoming Bookings</h1></div>
+        <div class="panel-body">Number</div>
       </div>
     </div>
   </div>
-</div><br>
+  <div class="row">
+    <div class="col-sm-3" align="left">
+      <img style="height:240px;width:300px;margin-right:100px;" src="http://www.topcalendarprintable.com/wp-content/uploads/2017/03/november-2017-calendar-3.jpg" alt="">
+    </div>
+    <div class="col-sm-9">
+      <div class="well" style="height:450px;">
+        <!-- <div class="row">
+          <div class="col-sm-4">
+            <header class="well">
+              <h3>Jamie</h3>
+            </header>
+            <img style="height:280px;width:100%;" src="/images/scheduletable.png" alt="">
+          </div>
+          <div class="col-sm-4">
+            <header class="well">
+              <h3>Jack</h3>
+            </header>
+            <img style="height:280px;width:100%;" src="/images/scheduletable.png" alt="">
+          </div>
+          <div class="col-sm-4">
+            <header class="well">
+              <h3>Jill</h3>
+            </header>
+            <img style="height:280px;width:100%;" src="/images/scheduletable.png" alt="">
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div><br><br>
 
 <footer class="container-fluid text-center">
   <p>Footer Text</p>
