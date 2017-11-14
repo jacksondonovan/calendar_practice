@@ -50,6 +50,65 @@
   </div>
 </nav>
 
+<div class="container">
+<div class="row">
+  <div class="col-sm-5">
+
+    <div  class="well tallwell" align="center">
+      <div style="position:relative;bottom:30px;" class="">
+        <h2 style="">Property Owner</h2>
+        <div class="" style="display:flex;flex-direction:row;">
+          <form class="" action="/login/property_owner" method="post">
+            <div class="">
+              <label for="">Email</label>
+              <input type="text" name="email" required>
+            </div>
+            <div class="leftbound">
+              <label for="">Password</label>
+              <input type="password" name="password" required>
+            </div>
+            <a><button style="width:100px;" type="submit">Log In</button></a>
+          </form>
+          <div class="">
+            <p>Not a Trader Jack Member?</p>
+            <a href="/property_owner_signup">Sign Up!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2" align="center">
+    <img style="height:140px;" src="./images/tjlogo.png" alt="">
+  </div>
+  <div class="col-sm-5">
+    <div class="well tallwell" align="center">
+      <div style="position:relative;bottom:30px;" class="">
+        <h2>Service Provider</h2>
+        <div class="" style="display:flex;flex-direction:row;">
+        <form class="" action="/login/service_provider" method="post">
+            <div class="">
+              <label for="">Email</label>
+              <input type="text" name="email" required>
+            </div>
+            <div class="leftbound">
+              <label for="">Password</label>
+              <input type="password" name="password" required>
+            </div>
+            <a><button style="width:100px;" type="submit">Log In</button></a>
+          </form>
+        <div class="">
+          <p>Not a Trader Jack Member?</p>
+          <a href="/service_provider_signup">Sign Up!</a>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<br>
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -87,47 +146,7 @@
     </a>
 </div>
 
-<div class="container">
-<div class="row">
-  <div class="col-sm-6">
-    <div class="well tallwell" align="center">
-      <form class="" action="/login/property_owner" method="post">
-        <h2>Property Owner</h2>
-        <div class="">
-          <label for="">Email</label>
-          <input type="text" name="email" required>
-        </div>
-        <div class="leftbound">
-          <label for="">Password</label>
-          <input type="password" name="password" required>
-        </div>
-        <a><button style="width:100px;" type="submit">Log In</button></a>
-      </form>
-      <p>Not a Trader Jack Member?</p>
-      <a href="/property_owner_signup"><button type="button">Sign Up!</button></a>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="well tallwell" align="center">
-      <form class="" action="/login/service_provider" method="post">
-        <h2>Service Provider</h2>
-        <div class="">
-          <label for="">Email</label>
-          <input type="text" name="email" required>
-        </div>
-        <div class="leftbound">
-          <label for="">Password</label>
-          <input type="password" name="password" required>
-        </div>
-        <a><button style="width:100px;" type="submit">Log In</button></a>
-      </form>
-      <p>Not a Trader Jack Member?</p>
-      <a href="/service_provider_signup"><button type="button">Sign Up!</button></a>
-    </div>
-  </div>
-</div>
-<hr>
-</div>
+
 
 
 
