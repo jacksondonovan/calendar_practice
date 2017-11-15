@@ -9,7 +9,7 @@ const key = process.env.COOKIE_KEY || 'asdfasdf'
 router.get('/property_owner/:email',(req,res)=>{
   linkQuery.getPropertyOwner().where('email',req.params.email).first().then((data)=>{
     console.log(data);
-    res.render('property_owner_profile',{thedata:data.first_name})
+    res.render('property_owner_profile',{POdetails:data})
   })
 })
 
