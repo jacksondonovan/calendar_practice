@@ -66,6 +66,11 @@
       <form class="" action="/edit/property_owner/edited/{{userdetails.email}}" method="post">
         <input hidden type="text" name="id" value="{{userdetails.id}}">
         <div class="">
+          <label for="">Company or Group Name</label>
+          <input type="text" name="company_name" value="{{userdetails.company_name}}">
+        </div>
+        <br>
+        <div class="">
           <label for="">Owner Rep First Name</label>
           <input type="text" name="first_name" value="{{userdetails.first_name}}" placeholder="{{userdetails.first_name}}">
         </div>
@@ -76,8 +81,18 @@
         </div>
         <br>
         <div class="">
+          <label for="">Owner Rep Phone Number</label>
+          <input type="text" name="phone" value="{{userdetails.phone}}" placeholder="{{userdetails.phone}}">
+        </div>
+        <br>
+        <div class="">
           <label for="">Owner Rep Address</label>
           <input type="text" name="address" value="{{userdetails.address}}" placeholder="{{userdetails.address}}">
+        </div>
+        <br>
+        <div class="">
+          <label for=""># Properties Owned</label>
+          <input type="text" name="properties_owned" value="{{userdetails.properties_owned}}">
         </div>
         <br>
         <div class="">
