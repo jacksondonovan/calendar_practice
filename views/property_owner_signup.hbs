@@ -5,6 +5,11 @@
     <form class="" action="/signup/property_owner" method="post">
       <!-- <input hidden type="text" name="id" value="{{POdetails.id}}"> -->
       <div class="">
+        <label style="color:black;" for="">Company or Group Name</label>
+        <input style="height:25px;" type="text" name="company_name" required>
+      </div>
+      <br>
+      <div class="">
         <label style="color:black;" for="">First Name</label>
         <input style="height:25px;" type="text" name="first_name" required>
       </div>
@@ -14,9 +19,19 @@
         <input style="height:25px;" type="text" name="last_name" required>
       </div>
       <br>
+      <div class="">
+        <label style="color:black;" for="">Phone Number</label>
+        <input style="height:25px;" type="text" name="phone" required>
+      </div>
+      <br>
       <div class="" style="margin-left:20px;">
         <label style="color:black;" for="">Address</label>
         <input style="height:25px;" type="text" name="address" required>
+      </div>
+      <br>
+      <div class="">
+        <label style="color:black;" for="">Properties Owned</label>
+        <input style="height:25px;" type="integer" name="properties_owned" required>
       </div>
       <br>
       <div class="" style="margin-left:34px;">
