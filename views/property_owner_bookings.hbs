@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+
+    /* Remove the jumbotron's default bottom margin */
+     .jumbotron {
+      margin-bottom: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">{{thisPO.company_name}}</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/profile/property_owner/{{thisPO.email}}">Dashboard</a></li>
+        <li class="active"><a href="#">All Leads</a></li>
+        <li><a href="/properties/property_owner/{{thisPO.company_name}}">My Properties</a></li>
+        <li><a href="/edit/property_owner/{{thisPO.email}}">Settings</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/">Log Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="well col-sm-4">
+      <header>
+        <h3>Create New Booking</h3>
+      </header>
+      <form action="/bookings/create/property_owner/{{thisPO.email}}" method="post">
+        <div class="">
+          <label for="">Request From</label>
+          <input type="text" name="requested_by" value="{{thisPO.company_name}}">
+        </div>
+        <br>
+        <div class="">
+          <label for="">Request For</label>
+          <input type="text" name="requested_for">
+        </div>
+        <br>
+        <div class="">
+          <label for="">Property Address</label>
+          <input type="text" name="property_address">
+        </div>
+        <br>
+        <div class="">
+          <label for="">Unit Number</label>
+          <input type="text" name="unit_number">
+        </div>
+        <br>
+        <div class="">
+          <label for="">Needs Cleaning?</label>
+          <input type="text" name="needs_cleaning">
+        </div>
+        <br>
+        <div class="">
+          <label for="">Needs Repair?</label>
+          <input type="text" name="needs_repair">
+        </div>
+        <br>
+        <button type="submit">Create Booking Request</button>
+      </form>
+    </div>
+    <div style="height:500px;" class="well col-sm-8">
+      <header>
+        <h3>All Bookings...</h3>
+      </header>
+    </div>
+  </div>
+</div>
+</body>
+</html>

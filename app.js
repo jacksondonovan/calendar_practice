@@ -12,6 +12,8 @@ var profile = require('./routes/profile.js')
 var signUp = require('./routes/signup.js')
 var logIn = require('./routes/login.js')
 var edit = require('./routes/edit.js')
+var bookings = require('./routes/bookings.js')
+var myProperties = require('./routes/my_properties.js')
 
 app.set('view engine','hbs')
 
@@ -34,6 +36,9 @@ app.use('/profile',profile)
 app.use('/signup',signUp)
 app.use('/login',logIn)
 app.use('/edit',edit)
+app.use('/bookings',bookings)
+app.use('/properties',myProperties)
+
 
 app.get('/',(req,res)=>{
   res.render('index')
