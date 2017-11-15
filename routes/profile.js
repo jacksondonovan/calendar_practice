@@ -9,7 +9,7 @@ const key = process.env.COOKIE_KEY || 'asdfasdf'
 router.get('/property_owner/:email',(req,res)=>{
   linkQuery.getPropertyOwner().where('email',req.params.email).first().then((data)=>{
     console.log(data);
-    res.render('property_owner_profile',{thedata:data.first_name})
+    res.render('property_owner_profile',{POdetails:data})
   })
 })
 
@@ -31,9 +31,8 @@ router.post('/property_owner/:email',(req,res)=>{
 })
 
 router.get('/service_provider/:email',(req,res)=>{
-  linkQuery.getServiceProvider().where('email',req.params.email).first().then((newdata)=>{
-    console.log(newdata);
-    res.render('service_provider_profile',{newestdata:newdata.company_name})
+  linkQuery.getServiceProvider().where('email',req.params.email).first().then((data)=>{
+    res.render('service_provider_profile',{SOdetails:data})
   })
 })
 

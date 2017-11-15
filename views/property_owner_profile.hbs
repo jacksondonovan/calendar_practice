@@ -35,12 +35,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">{{thedata}}</a>
+      <a class="navbar-brand" href="#">{{POdetails.first_name}}</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Dashboard</a></li>
-        <li><a href="#">Settings</a></li>
+        <li><a href="#">All Leads</a></li>
+        <li><a href="/edit/property_owner/{{POdetails.email}}">Settings</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/">Log Out</a></li>
@@ -57,7 +58,7 @@
       <div class="panel panel-primary">
         <div class="panel-heading"><h1>Service Bookings</h1></div>
 
-        <div class="panel-body">{{thedata}}</div>
+        <div class="panel-body">{{POdetails.first_name}}</div>
       </div>
     </div>
     <div class="col-sm-3">
