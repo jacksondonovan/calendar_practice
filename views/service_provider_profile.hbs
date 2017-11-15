@@ -44,13 +44,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Company Name</a>
+      <a class="navbar-brand" href="#">{{SOdetails.company_name}}</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Dashboard</a></li>
-        <li><a href="#">Settings</a></li>
         <li><a href="#">Booking Log</a></li>
+        <li><a href="/edit/service_provider/{{SOdetails.email}}">Settings</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/"> Log Out</a></li>
@@ -68,14 +68,14 @@
       <div class="panel panel-primary">
         <div class="panel-heading"><h1>Bookings To Date</h1></div>
 
-        <div class="panel-body">{{thedata}}</div>
+        <div class="panel-body">{{SOdetails.company_name}}</div>
       </div>
     </div>
     <div class="col-sm-3">
       <div class="panel panel-primary">
 
         <div class="panel-heading"> <h1>Booking Revenue</h1></div>
-        <div class="panel-body">Number</div>
+        <div class="panel-body">{{SOdetails.employee_count}}</div>
       </div>
     </div>
     <div class="col-sm-3">

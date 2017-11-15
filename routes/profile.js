@@ -31,9 +31,8 @@ router.post('/property_owner/:email',(req,res)=>{
 })
 
 router.get('/service_provider/:email',(req,res)=>{
-  linkQuery.getServiceProvider().where('email',req.params.email).first().then((newdata)=>{
-    console.log(newdata);
-    res.render('service_provider_profile',{newestdata:newdata.company_name})
+  linkQuery.getServiceProvider().where('email',req.params.email).first().then((data)=>{
+    res.render('service_provider_profile',{SOdetails:data})
   })
 })
 

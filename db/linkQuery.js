@@ -32,11 +32,29 @@ function deletePropertyOwner(id){
   return knex('property_users').select().where('id',id).del()
 }
 
+function updateServiceProvider(obj){
+  let so = obj
+  return knex('service_users').select().where('id',so.id)
+  .update({
+    'company_name':so.company_name,
+    'employee_count':so.employee_count,
+    'company_website':so.company_website,
+    'address':so.address,
+    'email':so.email
+  })
+}
+
+function deleteServiceProvider(id){
+  return knex('service_users').select().where('id',id).del()
+}
+
 module.exports = {
   addPropertyOwner,
   getPropertyOwner,
   addServiceProvider,
   getServiceProvider,
   updatePropertyOwner,
-  deletePropertyOwner
+  deletePropertyOwner,
+  updateServiceProvider,
+  deleteServiceProvider
 }
