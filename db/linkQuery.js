@@ -52,6 +52,10 @@ function addBooking(obj){
   return knex('bookings').insert(obj)
 }
 
+function getMyBookings(){
+  return knex('bookings').select()
+}
+
 function addProperty(obj){
   return knex('property_addresses').insert(obj)
 }
@@ -71,5 +75,6 @@ module.exports = {
   deleteServiceProvider,
   addBooking,
   addProperty,
-  getMyProperties
+  getMyProperties,
+  getMyBookings
 }

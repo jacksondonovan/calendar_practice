@@ -54,7 +54,8 @@
   <div class="row">
     <div class="well col-sm-4">
       <header>
-        <h3>Create New Booking</h3>
+        <h3 align="center">Create New Booking</h3>
+        <hr>
       </header>
       <form action="/bookings/create/property_owner/{{thisPO.email}}" method="post">
         <div class="">
@@ -90,10 +91,19 @@
         <button type="submit">Create Booking Request</button>
       </form>
     </div>
-    <div style="height:500px;" class="well col-sm-8">
-      <header>
-        <h3>All Bookings...</h3>
-      </header>
+    <div class="well col-sm-8">
+        <h3 align="center">All Bookings</h3>
+        {{#each allMyBookings}}
+        <div class="well">
+          <p>Request Submitted By: {{this.requested_by}}</p>
+          <p>Request Sent To: {{this.requested_for}}</p>
+          <p>For Address: {{this.property_address}}</p>
+          <p>Unit Number: {{this.unit_number}}</p>
+          <p>Needs Cleaning? {{this.needs_cleaning}}</p>
+          <p>Needs Repair? {{this.needs_repair}}</p>
+          <p>Booking Completed? {{this.is_completed}}</p>
+        </div>
+        {{/each}}
     </div>
   </div>
 </div>

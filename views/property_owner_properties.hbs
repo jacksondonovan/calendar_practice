@@ -40,7 +40,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="/edit/property_owner/nevermindedited/{{userdetails.email}}"> Dashboard</a></li>
-        <li><a href="/bookings/property_owner/{{userdetails.email}}">All Leads</a></li>
+        <li><a href="/bookings/property_owner/{{userdetails.company_name}}">All Leads</a></li>
         <li class="active"><a href="#">My Properties</a></li>
         <li><a href="/edit/property_owner/{{userdetails.email}}">Settings</a></li>
       </ul>
@@ -54,7 +54,7 @@
 <div class="container">
   <div class="row">
     <div class="well col-sm-4">
-      <h2 align="center">ADD PROPERTY</h2>
+      <h2 align="center">Add Property</h2>
       <hr>
       <form class="" action="/properties/addition/{{userdetails.company_name}}" method="post">
         <div class="">
@@ -78,14 +78,14 @@
     <div class="col-sm-1">
 
     </div>
-    <div style="height:500px;" class="well col-sm-7">
-      <h2>YOUR PROPERTIES...</h2>
+    <div class="well col-sm-7">
+      <h2 align="center">Your Properties</h2>
       {{#each allMyProperties}}
-
-      <p>{{this.owned_by}}</p>
-      <p>{{this.property_address}}</p>
-      <p>{{this.unit_number}}</p>
-
+      <div class="well">
+        <p>Owned By:{{this.owned_by}}</p>
+        <p>Property Address:{{this.property_address}}</p>
+        <p>Unit Number:{{this.unit_number}}</p>
+      </div>
       {{/each}}
     </div>
   </div>
