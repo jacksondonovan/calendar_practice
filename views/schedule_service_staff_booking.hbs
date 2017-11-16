@@ -35,13 +35,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">{{thisSO.company_name}}</a>
+      <a class="navbar-brand" href="#">{{currentSO.company_name}}</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="/profile/service_provider/{{thisSO.email}}">Dashboard</a></li>
-        <li class="active"><a href="/bookings/service_provider/{{thisSO.company_name}}">Booking Log</a></li>
-        <li><a href="/edit/service_provider/{{thisSO.email}}">Settings</a></li>
+        <li><a href="/edit/service_provider/nevermindedited/{{currentSO.email}}"> Dashboard</a></li>
+        <li><a href="/bookings/service_provider/{{currentSO.company_name}}">Booking Log</a></li>
+        <li class="active"><a href="#">Settings</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/">Log Out</a></li>
@@ -49,26 +49,11 @@
     </div>
   </div>
 </nav>
-<div class="container">
-  <div class="row">
-    <div class="well col-sm-8">
-        <h3 align="center">{{thisSO.company_name}}'s Bookings</h3>
-        {{#each allMyBookings}}
-        <div class="well">
-          <p>Request Submitted By: {{this.requested_by}}...{{this.id}}... Request Sent To: {{this.requested_for}}</p>
 
-          <p>{{this.date_needed}}</p>
-
-          <p>For Address: {{this.property_address}}. Unit Number: {{this.unit_number}}</p>
-
-          <p>Needs Cleaning? {{this.needs_cleaning}}. Needs Repair? {{this.needs_repair}}</p>
-
-          <button type="button"><a href="/bookings/schedule/{{this.requested_for}}/{{this.id}}">Schedule Cleaning</a></button>
-          <button type="button">Contact Owner</button>
-        </div>
-        {{/each}}
-    </div>
-  </div>
-</div>
+<h1>Bring in booking info.</h1>
+<h2>Bring in service staff members.</h2>
+<h2>Create form to have booking.assigned_to match a staff id.</h2>
+{{bookingDetails.date_needed}}
+{{currentSO.company_name}}
 </body>
 </html>

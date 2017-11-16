@@ -64,6 +64,14 @@ function getMyProperties(){
   return knex('property_addresses').select()
 }
 
+function addStaffMember(obj){
+  return knex('service_staff').insert(obj)
+}
+
+function getStaffMembers(){
+  return knex('service_staff').select()
+}
+
 module.exports = {
   addPropertyOwner,
   getPropertyOwner,
@@ -76,5 +84,7 @@ module.exports = {
   addBooking,
   addProperty,
   getMyProperties,
-  getMyBookings
+  getMyBookings,
+  getStaffMembers,
+  addStaffMember
 }
