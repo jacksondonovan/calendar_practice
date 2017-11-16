@@ -32,58 +32,31 @@ router.post('/property_owner/:email',(req,res)=>{
 
 router.get('/service_provider/:email',(req,res)=>{
   linkQuery.getServiceProvider().where('email',req.params.email).first().then((data)=>{
-    res.render('service_provider_profile',{SOdetails:data})
+    linkQuery.getMyBookings().where('requested_for',data.company_name).then((myBookings)=>{
+      let bookingsCompleted = 0;
+      for(let i = 0; i < myBookings.length; i++){
+        if(myBookings[i].is_completed){
+          bookingsCompleted++
+        }
+      }
+      let revenue = bookingsCompleted * 19.99
+      res.render('service_provider_profile',{
+        SOdetails:data,
+        totalBookings:myBookings.length,
+        completedBookings:bookingsCompleted,
+        displayRevenue:revenue
+      })
+    })
   })
 })
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-router.get('/:first_name',(req,res)=>{
-  linkQuery.getPropertyOwner().where('first_name',req.params.first_name).first().then((data)=>{
-    console.log(data);
-    res.render('/property_owner_profile',{thisuser:data})
-  })
-})
+// router.get('/:first_name',(req,res)=>{
+//   linkQuery.getPropertyOwner().where('first_name',req.params.first_name).first().then((data)=>{
+//     console.log(data);
+//     res.render('/property_owner_profile',{thisuser:data})
+//   })
+// })
 
 module.exports = router;
-
-
-//this is from yachtowners.
-//use this as a template to direct new users to profile or back home.
-
-
-// router.post('/',(req,res)=>{
-//   linkQuery.getUsers().where('username',req.body.username).first().then((user)=>{
-//     console.log(user);
-//     if(user){
-//       res.redirect('/')
-//     } else {
-//       linkQuery.addUser(req.body).then((data)=>{
-//         res.redirect('/profile/' + req.body.username)
-//       })
-//     }
-//   })
-// })
-//
-// router.get('/:username',(req,res)=>{
-//   linkQuery.getUsers().where('username',req.params.username).first().then((data)=>{
-//     console.log(data);
-//     res.render('profile',{thisuser:data})
-//   })
-// })

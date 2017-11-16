@@ -35,12 +35,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">{{userdetails.first_name}}</a>
+      <a class="navbar-brand" href="#">{{userdetails.company_name}}</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="/edit/property_owner/nevermindedited/{{userdetails.email}}"> Dashboard</a></li>
-        <li><a href="#">All Leads</a></li>
+        <li><a href="/bookings/property_owner/{{userdetails.company_name}}">All Leads</a></li>
+        <li><a href="/properties/property_owner/{{userdetails.company_name}}">My Properties</a></li>
         <li class="active"><a href="#">Settings</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">

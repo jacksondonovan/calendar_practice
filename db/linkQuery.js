@@ -48,6 +48,22 @@ function deleteServiceProvider(id){
   return knex('service_users').select().where('id',id).del()
 }
 
+function addBooking(obj){
+  return knex('bookings').insert(obj)
+}
+
+function getMyBookings(){
+  return knex('bookings').select()
+}
+
+function addProperty(obj){
+  return knex('property_addresses').insert(obj)
+}
+
+function getMyProperties(){
+  return knex('property_addresses').select()
+}
+
 module.exports = {
   addPropertyOwner,
   getPropertyOwner,
@@ -56,5 +72,9 @@ module.exports = {
   updatePropertyOwner,
   deletePropertyOwner,
   updateServiceProvider,
-  deleteServiceProvider
+  deleteServiceProvider,
+  addBooking,
+  addProperty,
+  getMyProperties,
+  getMyBookings
 }
