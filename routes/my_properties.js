@@ -2,11 +2,15 @@ const express = require('express')
 const router = express.Router()
 const linkQuery = require('../db/linkQuery')
 
-//mounted at properties
-
+//mounted at /properties
 router.get('/property_owner/:company_name',(req,res)=>{
   linkQuery.getPropertyOwner().where('company_name',req.params.company_name).first().then((userfound)=>{
-    res.render('property_owner_properties',{userdetails:userfound})
+    linkQuery.getMyProperties().where('owned_by',req.params.company_name).then((myList)=>{
+      res.render('property_owner_properties',{
+        userdetails:userfound,
+        allMyProperties:myList
+      })
+    })
   })
 })
 

@@ -56,6 +56,10 @@ function addProperty(obj){
   return knex('property_addresses').insert(obj)
 }
 
+function getMyProperties(){
+  return knex('property_addresses').select()
+}
+
 module.exports = {
   addPropertyOwner,
   getPropertyOwner,
@@ -66,5 +70,6 @@ module.exports = {
   updateServiceProvider,
   deleteServiceProvider,
   addBooking,
-  addProperty
+  addProperty,
+  getMyProperties
 }

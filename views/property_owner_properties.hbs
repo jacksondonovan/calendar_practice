@@ -51,26 +51,46 @@
   </div>
 </nav>
 
-<h2>ADD YOUR PROPERTIES BELOW</h2>
+<div class="container">
+  <div class="row">
+    <div class="well col-sm-4">
+      <h2 align="center">ADD PROPERTY</h2>
+      <hr>
+      <form class="" action="/properties/addition/{{userdetails.company_name}}" method="post">
+        <div class="">
+          <label for="">Owned By</label>
+          <input type="text" name="owned_by" value="{{userdetails.company_name}}">
+        </div>
+        <br>
+        <div class="">
+          <label for="">Property's Street Address</label>
+          <input type="text" name="property_address">
+        </div>
+        <br>
+        <div class="">
+          <label for="">Unit Number</label>
+          <input type="text" name="unit_number">
+        </div>
+        <br>
+        <button type="submit">Add Property</button>
+      </form>
+    </div>
+    <div class="col-sm-1">
 
-<form class="" action="/properties/addition/{{userdetails.company_name}}" method="post">
-  <div class="">
-    <label for="">Owned By</label>
-    <input type="text" name="owned_by" value="{{userdetails.company_name}}">
+    </div>
+    <div style="height:500px;" class="well col-sm-7">
+      <h2>YOUR PROPERTIES...</h2>
+      {{#each allMyProperties}}
+
+      <p>{{this.owned_by}}</p>
+      <p>{{this.property_address}}</p>
+      <p>{{this.unit_number}}</p>
+
+      {{/each}}
+    </div>
   </div>
-  <br>
-  <div class="">
-    <label for="">Property's Street Address</label>
-    <input type="text" name="property_address">
-  </div>
-  <br>
-  <div class="">
-    <label for="">Unit Number</label>
-    <input type="text" name="unit_number">
-  </div>
-  <br>
-  <button type="submit">Add Property</button>
-</form>
+</div>
+
 
 </body>
 </html>
