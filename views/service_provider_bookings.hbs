@@ -55,13 +55,15 @@
         <h3 align="center">{{thisSO.company_name}}'s Bookings</h3>
         {{#each allMyBookings}}
         <div class="well">
-          <p>Request Submitted By: {{this.requested_by}}. Request Sent To: {{this.requested_for}}</p>
+          <p>Request Submitted By: {{this.requested_by}}...{{this.id}}... Request Sent To: {{this.requested_for}}</p>
+
+          <p>{{this.date_needed}}</p>
 
           <p>For Address: {{this.property_address}}. Unit Number: {{this.unit_number}}</p>
 
           <p>Needs Cleaning? {{this.needs_cleaning}}. Needs Repair? {{this.needs_repair}}</p>
 
-          <button type="button">Schedule Cleaning</button>
+          <button type="button"><a href="/schedule/service_staff/{{this.id}}"></a>Schedule Cleaning</button>
           <button type="button">Contact Owner</button>
         </div>
         {{/each}}
