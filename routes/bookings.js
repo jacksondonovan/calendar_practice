@@ -23,4 +23,15 @@ router.post('/create/property_owner/:email',(req,res)=>{
   })
 })
 
+router.get('/service_provider/:company_name',(req,res)=>{
+  linkQuery.getServiceProvider().where('company_name',req.params.company_name).first().then((founduser)=>{
+    linkQuery.getMyBookings().where('requested_for',req.params.company_name).then((servicebookinglist)=>{
+      res.render('service_provider_bookings',{
+        thisSO:founduser,
+        allMyBookings:servicebookinglist
+      })
+    })
+  })
+})
+
 module.exports = router;

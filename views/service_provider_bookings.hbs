@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+
+    /* Remove the jumbotron's default bottom margin */
+     .jumbotron {
+      margin-bottom: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">{{thisSO.company_name}}</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/profile/service_provider/{{thisSO.email}}">Dashboard</a></li>
+        <li class="active"><a href="/bookings/service_provider/{{thisSO.company_name}}">Booking Log</a></li>
+        <li><a href="/edit/service_provider/{{thisSO.email}}">Settings</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/">Log Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="well col-sm-8">
+        <h3 align="center">{{thisSO.company_name}}'s Bookings</h3>
+        {{#each allMyBookings}}
+        <div class="well">
+          <p>Request Submitted By: {{this.requested_by}}. Request Sent To: {{this.requested_for}}</p>
+
+          <p>For Address: {{this.property_address}}. Unit Number: {{this.unit_number}}</p>
+
+          <p>Needs Cleaning? {{this.needs_cleaning}}. Needs Repair? {{this.needs_repair}}</p>
+
+          <button type="button">Schedule Cleaning</button>
+          <button type="button">Contact Owner</button>
+        </div>
+        {{/each}}
+    </div>
+  </div>
+</div>
+</body>
+</html>
