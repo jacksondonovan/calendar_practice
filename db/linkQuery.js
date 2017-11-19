@@ -72,6 +72,15 @@ function getStaffMembers(){
   return knex('service_staff').select()
 }
 
+function updateBookingAssigning(obj){
+  return knex('bookings').select().where('id',obj.id)
+  .update({
+    'is_available':obj.is_available,
+    'assigned_to':obj.assigned_to,
+    'hour_to_be_completed':obj.hour_to_be_completed
+  })
+}
+
 module.exports = {
   addPropertyOwner,
   getPropertyOwner,
@@ -86,5 +95,6 @@ module.exports = {
   getMyProperties,
   getMyBookings,
   getStaffMembers,
-  addStaffMember
+  addStaffMember,
+  updateBookingAssigning
 }

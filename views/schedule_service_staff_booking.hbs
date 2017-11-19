@@ -41,6 +41,7 @@
       <ul class="nav navbar-nav">
         <li><a href="/edit/service_provider/nevermindedited/{{currentSO.email}}"> Dashboard</a></li>
         <li><a href="/bookings/service_provider/{{currentSO.company_name}}">Booking Log</a></li>
+        <li><a href="/service_staff/service_provider/{{currentSO.company_name}}">My Staff</a></li>
         <li class="active"><a href="#">Settings</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -50,10 +51,46 @@
   </div>
 </nav>
 
-<h1>Bring in booking info.</h1>
-<h2>Bring in service staff members.</h2>
-<h2>Create form to have booking.assigned_to match a staff id.</h2>
+<h4>Bring in booking info.</h4>
+<h5>Bring in service staff members.</h5>
+<h5>Create form to have booking.assigned_to match a staff id.</h5>
 {{bookingDetails.date_needed}}
 {{currentSO.company_name}}
+
+<div class="container">
+  <div class="row">
+    <div class="well col-sm-4">
+      <figure>
+        <h2>Services needed from {{bookingDetails.requested_by}}</h2>
+        <h5>Date: {{bookingDetails.date_needed}}</h5>
+        <p>Property: {{bookingDetails.property_address}}</p>
+        <p>Unit Number: {{bookingDetails.unit_number}}</p>
+
+        <form class="" action="/bookings/staff_scheduling" method="post">
+          <input hidden type="text" name="id" value="{{bookingDetails.id}}">
+          <div class="">
+            <label for="">Assign to staff member</label>
+            <input type="text" name="assigned_to">
+          </div>
+          <br>
+          <div class="">
+            <label for="">During hour:</label>
+            <input type="text" name="hour_to_be_completed">
+          </div>
+          <br>
+          <input hidden type="boolean" name="is_available" value="false">
+          <button type="submit">Schedule Booking</button>
+        </form>
+      </figure>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
 </body>
 </html>

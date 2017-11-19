@@ -90,12 +90,13 @@
     <div class="well col-sm-8">
       <h3>Your Staff</h3>
       {{#each staffList}}
-      <div class="">
-        First Name{{this.first_name}}
-        Last Name{{this.last_name}}
-        Phone Contact{{this.phone}}
-        Employer{{this.employed_by}}
-        Account Number{{this.account_number}}
+      <div class="well">
+        <ul style="list-style:none;">
+          <li>{{this.first_name}} {{this.last_name}}</li>
+          <li>Employer: {{this.employed_by}}</li>
+          <li>Phone Contact: {{this.phone}}</li>
+          <li>Account Number: {{this.account_number}}</li>
+        </ul>
       </div>
       {{/each}}
     </div>

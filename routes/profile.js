@@ -8,8 +8,23 @@ const key = process.env.COOKIE_KEY || 'asdfasdf'
 //mounted at /profile
 router.get('/property_owner/:email',(req,res)=>{
   linkQuery.getPropertyOwner().where('email',req.params.email).first().then((data)=>{
-    console.log(data);
-    res.render('property_owner_profile',{POdetails:data})
+    linkQuery.getMyBookings().where('requested_by',data.company_name).then((myBookings)=>{
+      let bookingsCompleted = 0;
+      let pendingBookings = 0;
+      for(let i = 0; i < myBookings.length; i++){
+        if(myBookings[i].is_completed){
+          bookingsCompleted++;
+        }
+        if(!myBookings[i].is_available){
+          pendingBookings++;
+        }
+      }
+      res.render('property_owner_profile',{
+        POdetails:data,
+        completedBookings:bookingsCompleted,
+        bookingsPending:pendingBookings
+      })
+    })
   })
 })
 
