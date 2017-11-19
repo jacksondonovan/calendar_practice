@@ -50,6 +50,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="#">Dashboard</a></li>
         <li><a href="/bookings/service_provider/{{SOdetails.company_name}}">Booking Log</a></li>
+        <li><a href="/service_staff/service_provider/{{SOdetails.company_name}}">My Staff</a></li>
         <li><a href="/edit/service_provider/{{SOdetails.email}}">Settings</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -97,26 +98,20 @@
     </div>
     <div class="col-sm-9">
       <div class="well" style="height:450px;">
-        <!-- <div class="row">
+        <div class="row">
           <div class="col-sm-4">
-            <header class="well">
-              <h3>Jamie</h3>
-            </header>
-            <img style="height:280px;width:100%;" src="/images/scheduletable.png" alt="">
+            Next Booking:
+            November {{nextBooking}}
           </div>
           <div class="col-sm-4">
-            <header class="well">
-              <h3>Jack</h3>
-            </header>
-            <img style="height:280px;width:100%;" src="/images/scheduletable.png" alt="">
+            2nd Next Booking:
+            November {{secondNextBooking}}
           </div>
           <div class="col-sm-4">
-            <header class="well">
-              <h3>Jill</h3>
-            </header>
-            <img style="height:280px;width:100%;" src="/images/scheduletable.png" alt="">
+            3rd Next Booking:
+            November {{thirdNextBooking}}
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>

@@ -55,25 +55,29 @@
     <div class="col-sm-2 leftbound" align="left">
       <img style="height:120px;widht:80px;" src="/images/tjlogo.png"  >
     </div>
-    <div class="col-sm-3">
-      <div class="panel panel-primary">
-        <div class="panel-heading"><h1>Service Bookings</h1></div>
 
-        <div class="panel-body">{{POdetails.first_name}}</div>
+    <div class=" well col-sm-3">
+      <div class="card" style="width: 20rem;padding-left:45px;">
+        <div class="card-body">
+          <h2 align="center" class="card-title">{{completedBookings}}</h2>
+          <h4 align="center" class="card-text">Bookings Fulfilled</h4>
+        </div>
       </div>
     </div>
-    <div class="col-sm-3">
-      <div class="panel panel-primary">
-
-        <div class="panel-heading"> <h1>Staff on Date Selected</h1></div>
-        <div class="panel-body">Number</div>
+    <div class=" well col-sm-3">
+      <div class="card" style="width: 20rem;padding-left:45px;">
+        <div class="card-body">
+          <h2 align="center" class="card-title">N/A</h2>
+          <h5 align="center" class="card-text">Staff on Date Selected</h5>
+        </div>
       </div>
     </div>
-    <div class="col-sm-3">
-      <div class="panel panel-primary">
-
-        <div class="panel-heading"><h1>This Weeks Leads</h1></div>
-        <div class="panel-body">Number</div>
+    <div class=" well col-sm-3">
+      <div class="card" style="width: 20rem;padding-left:45px;">
+        <div class="card-body">
+          <h2 align="center" class="card-title">{{bookingsPending}}</h2>
+          <h4 align="center" class="card-text">Pending Leads</h4>
+        </div>
       </div>
     </div>
   </div>

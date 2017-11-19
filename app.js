@@ -14,6 +14,7 @@ var logIn = require('./routes/login.js')
 var edit = require('./routes/edit.js')
 var bookings = require('./routes/bookings.js')
 var myProperties = require('./routes/my_properties.js')
+var myStaff = require('./routes/service_staff.js')
 
 app.set('view engine','hbs')
 
@@ -38,6 +39,8 @@ app.use('/login',logIn)
 app.use('/edit',edit)
 app.use('/bookings',bookings)
 app.use('/properties',myProperties)
+app.use('/service_staff',myStaff)
+
 
 
 app.get('/',(req,res)=>{

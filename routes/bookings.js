@@ -34,4 +34,27 @@ router.get('/service_provider/:company_name',(req,res)=>{
   })
 })
 
+router.get('/schedule/:requested_for/:id',(req,res)=>{
+  linkQuery.getServiceProvider().where('company_name',req.params.requested_for).first().then((foundservicer)=>{
+    linkQuery.getMyBookings().where('id',req.params.id).first().then((foundbooking)=>{
+      res.render('schedule_service_staff_booking',{
+        currentSO:foundservicer,
+        bookingDetails:foundbooking
+      })
+    })
+  })
+})
+
+router.post('/staff_scheduling',(req,res)=>{
+  linkQuery.getMyBookings().where('id',req.body.id).first().then((foundbooking)=>{
+    linkQuery.getServiceProvider().where('company_name',foundbooking.requested_for).first().then((servicer)=>{
+      linkQuery.updateBookingAssigning(req.body).then(function(data) {
+        res.redirect('/profile/service_provider/' + servicer.email)
+      })
+    })
+  })
+})
+
+
+
 module.exports = router;

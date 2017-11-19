@@ -46,4 +46,15 @@ router.post('/service_provider',(req,res)=>{
   })
 })
 
+router.post('/staff_member',(req,res)=>{
+  linkQuery.addStaffMember(req.body).then(function(){
+    linkQuery.getServiceProvider().where('company_name',req.body.employed_by).first().then((foundprovider)=>{
+      res.redirect('/profile/service_provider/' + foundprovider.email)
+    })
+  })
+})
+
+
+
+
 module.exports = router;

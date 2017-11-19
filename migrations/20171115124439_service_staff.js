@@ -6,6 +6,8 @@ exports.up = function(knex, Promise) {
     table.string('last_name').notNullable()
     table.string('phone').notNullable()
     table.string('employed_by').references('company_name').inTable('service_users').notNullable()
+    table.integer('account_number').notNullable()
+    table.integer('total_earnings').defaultTo(0)
   })
 };
 
