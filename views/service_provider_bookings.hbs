@@ -52,15 +52,32 @@
 </nav>
 <div class="container">
   <div class="row">
-    <div class="well col-sm-8">
-        <h3 align="center">{{thisSO.company_name}}'s Bookings</h3>
-        {{#each allMyBookings}}
+    <div class="well col-sm-5">
+      <h3 align="center">{{thisSO.company_name}}'s Pending Bookings</h3>
+      {{#each bookingsPending}}
+      <div class="well">
+
+        <h4>Request Submitted By: {{this.requested_by}}</h4>
+        <p>{{this.date_needed}}</p>
+        <p>Staff: {{this.assigned_to}}</p>
+        <p>Address: {{this.property_address}}. Unit Number: {{this.unit_number}}</p>
+        <p>Needs Cleaning? {{this.needs_cleaning}}. Needs Repair? {{this.needs_repair}}</p>
+
+      </div>
+      {{/each}}
+    </div>
+    <div class="col-sm-1">
+
+    </div>
+    <div class="well col-sm-5">
+        <h3 align="center">{{thisSO.company_name}}'s Available Requests</h3>
+        {{#each requestsOpen}}
         <div class="well">
-          <p>Request Submitted By: {{this.requested_by}}...{{this.id}}... Request Sent To: {{this.requested_for}}</p>
+          <h4>Request Submitted By: {{this.requested_by}}</h4>
 
           <p>{{this.date_needed}}</p>
 
-          <p>For Address: {{this.property_address}}. Unit Number: {{this.unit_number}}</p>
+          <p>Address: {{this.property_address}}. Unit Number: {{this.unit_number}}</p>
 
           <p>Needs Cleaning? {{this.needs_cleaning}}. Needs Repair? {{this.needs_repair}}</p>
 

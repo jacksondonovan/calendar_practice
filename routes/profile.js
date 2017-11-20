@@ -48,23 +48,9 @@ router.post('/property_owner/:email',(req,res)=>{
 router.get('/service_provider/:email',(req,res)=>{
   linkQuery.getServiceProvider().where('email',req.params.email).first().then((data)=>{
     linkQuery.getMyBookings().where('requested_for',data.company_name).then((myBookings)=>{
-      let bookingsCompleted = 0;
-      for(let i = 0; i < myBookings.length; i++){
-        if(myBookings[i].is_completed){
-          bookingsCompleted++
-        }
-      }
-      let revenue = bookingsCompleted * 19.99
-      let mostUpcoming;
-
-      var upcomingDate = function(dateSTR){
+      function upcomingDate(dateSTR){
         let arrDate = dateSTR.split('/')
         return arrDate[2]
-      }
-
-      let allDays = []
-      for(let i = 0; i < myBookings.length; i++){
-        allDays.push(upcomingDate(myBookings[i].date_needed))
       }
       var bubble = function(arr){
         let temp
@@ -85,16 +71,98 @@ router.get('/service_provider/:email',(req,res)=>{
         }
         return arr;
       }
-      bubble(allDays)
+
+      var justDates = [];
+      var justPendings = [];
+      for(let i = 0; i < myBookings.length; i++){
+        if(!myBookings[i].is_available){
+          justDates.push(upcomingDate(myBookings[i].date_needed));
+          justPendings.push(myBookings[i])
+        }
+      }
+      console.log(justDates);
+      function anotherBubble(pendingarr,pendingdates){
+        let temp;
+        let newtemp;
+        let truth = true;
+        while(truth){
+          let count = 0;
+          for(let i = 0; i < pendingarr.length; i++){
+            if(pendingdates[i] > pendingdates[i+1]){
+              newtemp = pendingdates[i];
+              pendingdates[i] = pendingdates[i+1];
+              pendingdates[i+1] = newtemp;
+              temp = pendingarr[i];
+              pendingarr[i] = pendingarr[i+1];
+              pendingarr[i+1] = temp;
+              count++
+            }
+          }
+          if(count === 0){
+            truth = false;
+          }
+        }
+        return pendingarr;
+      }
+      anotherBubble(justPendings,justDates)
+      console.log(justDates);
+      console.log(justPendings);
+      let bookingsCompleted = 0;
+      let pendingBookingDates = []
+      // for(let i = 0; i < myBookings.length; i++){
+      //   if(!myBookings[i].is_available){
+      //     allPendingBookings.push(myBookings[i])
+      //   }
+      // }
+      // console.log(allPendingBookings);
+      // let orderBookings = []
+      // let currentLow = 32
+      // for(let i = 0; i < allPendingBookings.length; i++){
+      //   if(upcomingDate(allPendingBookings[i].date_needed) < currentLow){
+      //     currentLow = upcomingDate(allPendingBookings[i].date_needed);
+      //     orderBookings.unshift(allPendingBookings[i]);
+      //   }
+      // }
+      // console.log(orderBookings);
+
+      for(let i = 0; i < myBookings.length; i++){
+        if(myBookings[i].is_completed){
+          bookingsCompleted++
+        }
+        if(!myBookings[i].is_available){
+          pendingBookingDates.push(upcomingDate(myBookings[i].date_needed))
+        }
+      }
+      let revenue = bookingsCompleted * 19.99
+
+      // bubble(pendingBookingDates)
 
       res.render('service_provider_profile',{
         SOdetails:data,
-        totalBookings:myBookings.length,
+        totalBookings:pendingBookingDates.length,
         completedBookings:bookingsCompleted,
         displayRevenue:revenue,
-        nextBooking:allDays[0],
-        secondNextBooking:allDays[1],
-        thirdNextBooking:allDays[2]
+        nextScheduling:upcomingDate(justPendings[0].date_needed),
+        nextStaff:justPendings[0].assigned_to,
+        nextAddress:justPendings[0].property_address,
+        nextUnit:justPendings[0].unit_number,
+        nextNeedsCleaning:justPendings[0].needs_cleaning,
+        nextNeedsRepair:justPendings[0].needs_repair,
+        nextCheckoutConfirm:justPendings[0].is_checkedout,
+        secondNextScheduling:upcomingDate(justPendings[1].date_needed),
+        secondnextStaff:justPendings[1].assigned_to,
+        secondnextAddress:justPendings[1].property_address,
+        secondnextUnit:justPendings[1].unit_number,
+        secondnextNeedsRepair:justPendings[1].needs_repair,
+        secondnextNeedsCleaning:justPendings[1].needs_cleaning,
+        secondnextCheckoutConfirm:justPendings[1].is_checkedout,
+        thirdNextScheduling:upcomingDate(justPendings[2].date_needed),
+        thirdnextStaff:justPendings[2].assigned_to,
+        thirdnextAddress:justPendings[2].property_address,
+        thirdnextUnit:justPendings[2].unit_number,
+        thirdnextNeedsCleaning:justPendings[2].needs_cleaning,
+        thirdnextNeedsRepair:justPendings[2].needs_repair,
+        thirdnextCheckoutConfirm:justPendings[2].is_checkedout
       })
     })
   })
