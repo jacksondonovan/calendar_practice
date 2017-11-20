@@ -52,7 +52,7 @@
 </nav>
 <div class="container">
   <div class="row">
-    <div class="well col-sm-4">
+    <div class="well col-sm-3">
       <header>
         <h3 align="center">Create New Booking</h3>
         <hr>
@@ -96,17 +96,31 @@
         <button type="submit">Create Booking Request</button>
       </form>
     </div>
-    <div class="well col-sm-8">
-        <h3 align="center">All Bookings</h3>
-        {{#each allMyBookings}}
+    <div class="well col-sm-4">
+      <h3 align="center">Taken Bookings</h3>
+      {{#each myPendingBookings}}
+      <div class="well">
+        <p>Request Submitted By: {{this.requested_by}}</p>
+        <p>Request Sent To: {{this.requested_for}}</p>
+        <p>Date: {{this.date_needed}}</p>
+        <p>For Address: {{this.property_address}}</p>
+        <p>Unit Number: {{this.unit_number}}</p>
+        <p>Needs Cleaning? {{this.needs_cleaning}}</p>
+        <p>Needs Repair? {{this.needs_repair}}</p>
+      </div>
+      {{/each}}
+    </div>
+    <div class="well col-sm-4">
+        <h3 align="center">Open Requests</h3>
+        {{#each myOpenRequests}}
         <div class="well">
           <p>Request Submitted By: {{this.requested_by}}</p>
           <p>Request Sent To: {{this.requested_for}}</p>
+          <p>Date: {{this.date_needed}}</p>
           <p>For Address: {{this.property_address}}</p>
           <p>Unit Number: {{this.unit_number}}</p>
           <p>Needs Cleaning? {{this.needs_cleaning}}</p>
           <p>Needs Repair? {{this.needs_repair}}</p>
-          <p>Booking Completed? {{this.is_completed}}</p>
         </div>
         {{/each}}
     </div>
