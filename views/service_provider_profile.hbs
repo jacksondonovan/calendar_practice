@@ -100,142 +100,61 @@
       <div class="well" style="height:470px;">
         <div class="row">
           <div class="col-sm-4">
-            <table style="border:2px solid black;width:100%;">
-              <tr>
-                <td>
-                  <label for="">Next Booking:</label>
-                  <h5>November {{nextScheduling}}</h5>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Assigned To Staff Member:</label>
-                  <h4>{{nextStaff}}</h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Location:</label>
-                  <h4>{{nextAddress}}</h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Unit Number:</label>
-                  <h4>{{nextUnit}}</h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Needs Cleaning:</label>
-                  <h4>{{nextNeedsCleaning}}</h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Needs Repairs:</label>
-                  <h4>{{nextNeedsRepair}}</h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Verified Checkout?:</label>
-                  <h4>{{nextCheckoutConfirm}}</h4>
-                </td>
-              </tr>
-            </table>
+            <div class="card well" style="width: 100%;opacity:1.0;">
+              <h4 class="card-title">November {{nextScheduling}}</h4>
+              <img class="card-img-top" style="width:100%;height:80px;" src="http://the-gonzalezgroup.com/wp-content/uploads/2017/05/street-view.jpg" alt="Card image cap">
+              <div class="card-body">
+
+                <p class="card-text">Address: {{nextAddress}} Unit {{nextUnit}}</p>
+                <p class="card-text">Assigned To: {{nextStaff}}</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Needs Cleaning: {{nextNeedsCleaning}}</li>
+                <li class="list-group-item">Needs Repairs: {{nextNeedsRepair}}</li>
+                <li class="list-group-item">Has Checkedout: {{nextCheckoutConfirm}}</li>
+              </ul>
+              <div class="card-body">
+                <a href="#" class="card-link">Review Booking</a>
+              </div>
+            </div>
           </div>
           <div class="col-sm-4">
-            <table style="border:2px solid black;width:100%;">
-              <tr>
-                <td>
-                  <label for="">Next Booking:</label>
-                  <h5>November {{secondNextScheduling}}</h5>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Assigned To Staff Member:</label>
-                  <h4>{{secondnextStaff}}</h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Location:</label>
-                  <h4>{{secondnextAddress}}</h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Unit Number:</label>
-                  <h4>{{secondnextUnit}}</h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Needs Cleaning:</label>
-                  <h4>{{secondnextNeedsCleaning}}</h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Needs Repairs:</label>
-                  <h4>{{secondnextNeedsRepair}}</h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Verified Checkout?:</label>
-                  <h4>{{secondnextCheckoutConfirm}}</h4>
-                </td>
-              </tr>
-            </table>
+            <div class="card well" style="width: 100%;">
+              <h4 class="card-title">November {{secondNextScheduling}}</h4>
+              <img class="card-img-top" style="width:100%;height:80px;" src="http://the-gonzalezgroup.com/wp-content/uploads/2017/05/street-view.jpg" alt="Card image cap">
+              <div class="card-body">
+
+                <p class="card-text">Address: {{secondnextAddress}} Unit {{secondnextUnit}}</p>
+                <p class="card-text">Assigned To: {{secondnextStaff}}</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Needs Cleaning: {{secondnextNeedsCleaning}}</li>
+                <li class="list-group-item">Needs Repairs: {{secondnextNeedsRepair}}</li>
+                <li class="list-group-item">Has Checkedout: {{secondnextCheckoutConfirm}}</li>
+              </ul>
+              <div class="card-body">
+                <a href="#" class="card-link">Review Booking</a>
+              </div>
+            </div>
           </div>
           <div class="col-sm-4">
-            <table style="border:2px solid black;width:100%;">
-              <tr>
-                <td>
-                  <label for="">Next Booking:</label>
-                  <h5>November {{thirdNextScheduling}}</h5>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Assigned To Staff Member:</label>
-                  <h4>{{thirdnextStaff}}</h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Location:</label>
-                  <h4>{{thirdnextAddress}}</h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Unit Number:</label>
-                  <h4>{{thirdnextUnit}}</h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Needs Cleaning:</label>
-                  <h4>{{thirdnextNeedsCleaning}}</h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Needs Repairs:</label>
-                  <h4>{{thirdnextNeedsRepair}}</h4>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="">Verified Checkout?:</label>
-                  <h4>{{thirdnextCheckoutConfirm}}</h4>
-                </td>
-              </tr>
-            </table>
+            <div class="card well" style="width: 100%;">
+              <h4 class="card-title">November {{thirdNextScheduling}}</h4>
+              <img class="card-img-top" style="width:100%;height:80px;" src="http://the-gonzalezgroup.com/wp-content/uploads/2017/05/street-view.jpg" alt="Card image cap">
+              <div class="card-body">
+
+                <p class="card-text">Address: {{secondnextAddress}} Unit {{thirdnextUnit}}</p>
+                <p class="card-text">Assigned To: {{thirdnextStaff}}</p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Needs Cleaning: {{thirdnextNeedsCleaning}}</li>
+                <li class="list-group-item">Needs Repairs: {{thirdnextNeedsRepair}}</li>
+                <li class="list-group-item">Has Checkedout: {{thirdnextCheckoutConfirm}}</li>
+              </ul>
+              <div class="card-body">
+                <a href="#" class="card-link">Review Booking</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
