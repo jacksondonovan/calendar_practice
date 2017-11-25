@@ -20,6 +20,7 @@ function updatePropertyOwner(obj){
   let po = obj
   return knex('property_users').select().where('id',po.id)
   .update({
+    'profile_picture':po.profile_picture,
     'first_name':po.first_name,
     'last_name':po.last_name,
     'address':po.address,
@@ -37,6 +38,7 @@ function updateServiceProvider(obj){
   return knex('service_users').select().where('id',so.id)
   .update({
     'company_name':so.company_name,
+    'profile_picture':so.profile_picture,
     'employee_count':so.employee_count,
     'company_website':so.company_website,
     'address':so.address,

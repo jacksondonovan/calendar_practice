@@ -72,6 +72,11 @@
           <input type="text" name="unit_number">
         </div>
         <br>
+        <div class="">
+          <label for="">Property Photo</label>
+          <input type="text" name="property_photo">
+        </div>
+        <br>
         <button type="submit">Add Property</button>
       </form>
     </div>
@@ -85,6 +90,7 @@
         <p>Owned By:{{this.owned_by}}</p>
         <p>Property Address:{{this.property_address}}</p>
         <p>Unit Number:{{this.unit_number}}</p>
+        <img style="height:150px;width:200px;" src="{{this.property_photo}}" alt="">
       </div>
       {{/each}}
     </div>

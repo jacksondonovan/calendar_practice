@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('property_users',function(table){
     table.increments()
     table.string('company_name').notNullable().unique()
+    table.string('profile_picture')
     table.string('first_name').notNullable()
     table.string('last_name').notNullable()
     table.string('phone').notNullable()

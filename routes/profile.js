@@ -48,8 +48,7 @@ router.post('/property_owner/:email',(req,res)=>{
 router.get('/service_provider/:email',(req,res)=>{
   linkQuery.getServiceProvider().where('email',req.params.email).first().then((data)=>{
     linkQuery.getMyBookings().where('requested_for',data.company_name).then((myBookings)=>{
-      function upcomingDate(dateSTR){
-        let arrDate = dateSTR.split('/')
+      function upcomingDate(dateSTR){        let arrDate = dateSTR.split('/')
         return arrDate[2]
       }
       var bubble = function(arr){
@@ -71,7 +70,6 @@ router.get('/service_provider/:email',(req,res)=>{
         }
         return arr;
       }
-
       var justDates = [];
       var justPendings = [];
       for(let i = 0; i < myBookings.length; i++){
@@ -80,7 +78,6 @@ router.get('/service_provider/:email',(req,res)=>{
           justPendings.push(myBookings[i])
         }
       }
-      console.log(justDates);
       function anotherBubble(pendingarr,pendingdates){
         let temp;
         let newtemp;
@@ -105,26 +102,8 @@ router.get('/service_provider/:email',(req,res)=>{
         return pendingarr;
       }
       anotherBubble(justPendings,justDates)
-      console.log(justDates);
-      console.log(justPendings);
       let bookingsCompleted = 0;
       let pendingBookingDates = []
-      // for(let i = 0; i < myBookings.length; i++){
-      //   if(!myBookings[i].is_available){
-      //     allPendingBookings.push(myBookings[i])
-      //   }
-      // }
-      // console.log(allPendingBookings);
-      // let orderBookings = []
-      // let currentLow = 32
-      // for(let i = 0; i < allPendingBookings.length; i++){
-      //   if(upcomingDate(allPendingBookings[i].date_needed) < currentLow){
-      //     currentLow = upcomingDate(allPendingBookings[i].date_needed);
-      //     orderBookings.unshift(allPendingBookings[i]);
-      //   }
-      // }
-      // console.log(orderBookings);
-
       for(let i = 0; i < myBookings.length; i++){
         if(myBookings[i].is_completed){
           bookingsCompleted++
@@ -134,47 +113,53 @@ router.get('/service_provider/:email',(req,res)=>{
         }
       }
       let revenue = bookingsCompleted * 19.99
-
-      // bubble(pendingBookingDates)
-
-      res.render('service_provider_profile',{
-        SOdetails:data,
-        totalBookings:pendingBookingDates.length,
-        completedBookings:bookingsCompleted,
-        displayRevenue:revenue,
-        nextScheduling:upcomingDate(justPendings[0].date_needed),
-        nextStaff:justPendings[0].assigned_to,
-        nextAddress:justPendings[0].property_address,
-        nextUnit:justPendings[0].unit_number,
-        nextNeedsCleaning:justPendings[0].needs_cleaning,
-        nextNeedsRepair:justPendings[0].needs_repair,
-        nextCheckoutConfirm:justPendings[0].is_checkedout,
-        secondNextScheduling:upcomingDate(justPendings[1].date_needed),
-        secondnextStaff:justPendings[1].assigned_to,
-        secondnextAddress:justPendings[1].property_address,
-        secondnextUnit:justPendings[1].unit_number,
-        secondnextNeedsRepair:justPendings[1].needs_repair,
-        secondnextNeedsCleaning:justPendings[1].needs_cleaning,
-        secondnextCheckoutConfirm:justPendings[1].is_checkedout,
-        thirdNextScheduling:upcomingDate(justPendings[2].date_needed),
-        thirdnextStaff:justPendings[2].assigned_to,
-        thirdnextAddress:justPendings[2].property_address,
-        thirdnextUnit:justPendings[2].unit_number,
-        thirdnextNeedsCleaning:justPendings[2].needs_cleaning,
-        thirdnextNeedsRepair:justPendings[2].needs_repair,
-        thirdnextCheckoutConfirm:justPendings[2].is_checkedout
-      })
+      console.log('it should be here' , justPendings[0].property_photo);
+      if(justPendings[0] && !justPendings[1]){
+        res.render('service_provider_profile',{
+          SOdetails:data,
+          totalBookings:pendingBookingDates.length,
+          completedBookings:bookingsCompleted,
+          displayRevenue:revenue,
+          nextPending:justPendings[0],
+          nextScheduling:upcomingDate(justPendings[0].date_needed)
+        })
+      }
+      if(justPendings[0] && justPendings[1] && !justPendings[2]){
+        res.render('service_provider_profile',{
+          SOdetails:data,
+          totalBookings:pendingBookingDates.length,
+          completedBookings:bookingsCompleted,
+          displayRevenue:revenue,
+          nextScheduling:upcomingDate(justPendings[0].date_needed),
+          nextPending:justPendings[0],
+          secondnextPending:justPendings[1],
+          secondNextScheduling:upcomingDate(justPendings[1].date_needed)
+        })
+      }
+      if(justPendings[0] && justPendings[1] && justPendings[2]){
+        res.render('service_provider_profile',{
+          SOdetails:data,
+          totalBookings:pendingBookingDates.length,
+          completedBookings:bookingsCompleted,
+          displayRevenue:revenue,
+          nextPending:justPendings[0],
+          nextScheduling:upcomingDate(justPendings[0].date_needed),
+          secondnextPending:justPendings[1],
+          secondNextScheduling:upcomingDate(justPendings[1].date_needed),
+          thirdnextPending:justPendings[2],
+          thirdNextScheduling:upcomingDate(justPendings[2].date_needed)
+        })
+      }
+      if(!justPendings[0]){
+        res.render('service_provider_profile',{
+          SOdetails:data,
+          totalBookings:pendingBookingDates.length,
+          completedBookings:bookingsCompleted,
+          displayRevenue:revenue
+        })
+      }
     })
   })
 })
-
-
-
-// router.get('/:first_name',(req,res)=>{
-//   linkQuery.getPropertyOwner().where('first_name',req.params.first_name).first().then((data)=>{
-//     console.log(data);
-//     res.render('/property_owner_profile',{thisuser:data})
-//   })
-// })
 
 module.exports = router;

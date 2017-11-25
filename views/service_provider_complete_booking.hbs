@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+
+    /* Remove the jumbotron's default bottom margin */
+     .jumbotron {
+      margin-bottom: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">{{currentSO.company_name}}</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="/edit/service_provider/nevermindedited/{{currentSO.email}}"> Dashboard</a></li>
+        <li class="active"><a href="/bookings/service_provider/{{currentSO.company_name}}">Booking Log</a></li>
+        <li><a href="/service_staff/service_provider/{{currentSO.company_name}}">My Staff</a></li>
+        <li><a href="#">Settings</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/">Log Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="well col-sm-4">
+      <figure>
+        <h2>{{bookingDetails.requested_by}}</h2>
+        <h5>Date: {{bookingDetails.date_needed}}</h5>
+        <p>Property: {{bookingDetails.property_address}}</p>
+        <p>Unit Number: {{bookingDetails.unit_number}}</p>
+
+        <form class="" action="/bookings/staff_scheduling" method="post">
+          <input hidden type="text" name="id" value="{{bookingDetails.id}}">
+          <div class="">
+            <label for="">Has been cleaned by {{bookingDetails.assigned_to}}:</label>
+            <input type="text" name="has_been_cleaned">
+          </div>
+          <br>
+          <div class="">
+            <label for="">Has been repaired by {{bookingDetails.assigned_to}}:</label>
+            <input type="text" name="has_been_repaired">
+          </div>
+          <br>
+          <div class="">
+            <label for="">Guests have checkedout</label>
+            <input type="text" name="has_been_checkedout">
+          </div>
+          <br>
+          <br>
+          <h5>Confirmation emails will be sent to property owner, service provider and tj</h5>
+          <br>
+          <button type="">Finish</button>
+        </form>
+      </figure>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+
+</body>
+</html>

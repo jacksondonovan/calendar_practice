@@ -77,6 +77,16 @@ router.post('/staff_scheduling',(req,res)=>{
   })
 })
 
+router.get('/complete/:company_name/:id',(req,res)=>{
+  linkQuery.getMyBookings().where('id',req.params.id).first().then((foundbooking)=>{
+    linkQuery.getServiceProvider().where('company_name',foundbooking.requested_for).first().then((servicer)=>{
+      res.render('service_provider_complete_booking',{
+        bookingDetails:foundbooking,
+        currentSO:servicer
+      })
+    })
+  })
+})
 
 
 module.exports = router;
