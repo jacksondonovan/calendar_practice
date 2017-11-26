@@ -113,7 +113,6 @@ router.get('/service_provider/:email',(req,res)=>{
         }
       }
       let revenue = bookingsCompleted * 19.99
-      console.log('it should be here' , justPendings[0].property_photo);
       if(justPendings[0] && !justPendings[1]){
         res.render('service_provider_profile',{
           SOdetails:data,

@@ -102,7 +102,7 @@
           <div class="col-sm-4">
             <div class="card well" style="width: 100%;opacity:1.0;">
               <h4 class="card-title">November {{nextScheduling}}</h4>
-              <img class="card-img-top" style="width:100%;height:80px;" src="{{nextPropertyPhoto}}" alt="Card image cap">
+              <img class="card-img-top" style="width:100%;height:80px;" src="{{nextPending.property_address}}" alt="Card image cap">
               <div class="card-body">
 
                 <p class="card-text">Address: {{nextPending.property_address}} Unit {{nextPending.unit_number}}</p>
@@ -114,7 +114,7 @@
                 <li class="list-group-item">Has Checkedout: {{nextPending.has_been_checkedout}}</li>
               </ul>
               <div class="card-body">
-                <a href="/bookings/complete/{{SOdetails.company_name}}/{{nextID}}" class="card-link">Review Booking</a>
+                <a href="/bookings/complete/{{SOdetails.company_name}}/{{nextPending.id}}" class="card-link">Review Booking</a>
               </div>
             </div>
           </div>
@@ -133,7 +133,7 @@
                 <li class="list-group-item">Has Checkedout: {{secondnextPending.has_been_checkedout}}</li>
               </ul>
               <div class="card-body">
-                <a href="/bookings/complete/{{SOdetails.company_name}}/{{secondnextID}}" class="card-link">Review Booking</a>
+                <a href="/bookings/complete/{{SOdetails.company_name}}/{{secondnextPending.id}}" class="card-link">Review Booking</a>
               </div>
             </div>
           </div>
@@ -152,7 +152,7 @@
                 <li class="list-group-item">Has Checkedout: {{thirdnextPending.has_been_checkedout}}</li>
               </ul>
               <div class="card-body">
-                <a href="/bookings/complete/{{SOdetails.company_name}}/{{thirdnextID}}" class="card-link">Review Booking</a>
+                <a href="/bookings/complete/{{SOdetails.company_name}}/{{thirdnextPending.id}}" class="card-link">Review Booking</a>
               </div>
             </div>
           </div>
