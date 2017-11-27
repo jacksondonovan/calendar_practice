@@ -60,7 +60,7 @@
         <p>Property: {{bookingDetails.property_address}}</p>
         <p>Unit Number: {{bookingDetails.unit_number}}</p>
 
-        <form class="" action="/bookings/staff_scheduling" method="post">
+        <form class="" action="/profile/complete/service" method="post">
           <input hidden type="text" name="id" value="{{bookingDetails.id}}">
           <div class="">
             <label for="">Has been cleaned by {{bookingDetails.assigned_to}}:</label>
@@ -78,9 +78,9 @@
           </div>
           <br>
           <br>
-          <h5>Confirmation emails will be sent to property owner, service provider and tj</h5>
+          <h5>Confirmation emails will be sent to property owner, service provider and TraderJack</h5>
           <br>
-          <button type="">Finish</button>
+          <button type="submit">Finish</button>
         </form>
       </figure>
     </div>

@@ -83,6 +83,22 @@ function updateBookingAssigning(obj){
   })
 }
 
+function completeBooking(obj){
+  return knex('bookings').select().where('id',obj.id)
+  .update({
+    'has_been_cleaned':obj.has_been_cleaned,
+    'has_been_repaired':obj.has_been_repaired,
+    'has_been_checkedout':obj.has_been_checkedout
+  })
+}
+
+function bookingCompleted(obj){
+  return knex('bookings').select().where('id',obj.id)
+  .update({
+    'is_completed':true
+  })
+}
+
 module.exports = {
   addPropertyOwner,
   getPropertyOwner,
@@ -98,5 +114,7 @@ module.exports = {
   getMyBookings,
   getStaffMembers,
   addStaffMember,
-  updateBookingAssigning
+  updateBookingAssigning,
+  completeBooking,
+  bookingCompleted
 }
