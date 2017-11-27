@@ -52,6 +52,49 @@
 </nav>
 <div class="container">
   <div class="row">
+
+    <div class="well col-sm-3">
+      <h3 align="center">Taken Bookings</h3>
+      {{#each myPendingBookings}}
+      <div class="well">
+        <p>Submitted By: {{this.requested_by}}</p>
+        <p>Sent To: {{this.requested_for}}</p>
+        <p>Date: {{this.date_needed}}</p>
+        <p>For Address: {{this.property_address}}</p>
+        <p>Unit Number: {{this.unit_number}}</p>
+        <p>Needs Cleaning? {{this.needs_cleaning}}</p>
+        <p>Needs Repair? {{this.needs_repair}}</p>
+      </div>
+      {{/each}}
+    </div>
+    <div class="well col-sm-3">
+      <h4 align="center">Completed Bookings</h4>
+      {{#each myCompletedBookings}}
+      <div class="well">
+        <p>Submitted By: {{this.requested_by}}</p>
+        <p>Sent To: {{this.requested_for}}</p>
+        <p>Date: {{this.date_needed}}</p>
+        <p>For Address: {{this.property_address}}</p>
+        <p>Unit Number: {{this.unit_number}}</p>
+        <p>Needs Cleaning? {{this.needs_cleaning}}</p>
+        <p>Needs Repair? {{this.needs_repair}}</p>
+      </div>
+      {{/each}}
+    </div>
+    <div class="well col-sm-3">
+        <h3 align="center">Open Requests</h3>
+        {{#each myOpenRequests}}
+        <div class="well">
+          <p>Submitted By: {{this.requested_by}}</p>
+          <p>Sent To: {{this.requested_for}}</p>
+          <p>Date: {{this.date_needed}}</p>
+          <p>For Address: {{this.property_address}}</p>
+          <p>Unit Number: {{this.unit_number}}</p>
+          <p>Needs Cleaning? {{this.needs_cleaning}}</p>
+          <p>Needs Repair? {{this.needs_repair}}</p>
+        </div>
+        {{/each}}
+    </div>
     <div class="well col-sm-3">
       <header>
         <h3 align="center">Create New Booking</h3>
@@ -59,12 +102,12 @@
       </header>
       <form action="/bookings/create/property_owner/{{thisPO.email}}" method="post">
         <div class="">
-          <label for="">Request From</label>
+          <label for="">Services Needed By</label>
           <input type="text" name="requested_by" value="{{thisPO.company_name}}">
         </div>
         <br>
         <div class="">
-          <label for="">Request For</label>
+          <label for="">Services Request For</label>
           <input type="text" name="requested_for">
         </div>
         <br>
@@ -79,7 +122,7 @@
         </div>
         <br>
         <div class="">
-          <label for="">Unit Number</label>
+          <label for="">Address Unit Number</label>
           <input type="text" name="unit_number">
         </div>
         <br>
@@ -95,34 +138,6 @@
         <br>
         <button type="submit">Create Booking Request</button>
       </form>
-    </div>
-    <div class="well col-sm-4">
-      <h3 align="center">Taken Bookings</h3>
-      {{#each myPendingBookings}}
-      <div class="well">
-        <p>Request Submitted By: {{this.requested_by}}</p>
-        <p>Request Sent To: {{this.requested_for}}</p>
-        <p>Date: {{this.date_needed}}</p>
-        <p>For Address: {{this.property_address}}</p>
-        <p>Unit Number: {{this.unit_number}}</p>
-        <p>Needs Cleaning? {{this.needs_cleaning}}</p>
-        <p>Needs Repair? {{this.needs_repair}}</p>
-      </div>
-      {{/each}}
-    </div>
-    <div class="well col-sm-4">
-        <h3 align="center">Open Requests</h3>
-        {{#each myOpenRequests}}
-        <div class="well">
-          <p>Request Submitted By: {{this.requested_by}}</p>
-          <p>Request Sent To: {{this.requested_for}}</p>
-          <p>Date: {{this.date_needed}}</p>
-          <p>For Address: {{this.property_address}}</p>
-          <p>Unit Number: {{this.unit_number}}</p>
-          <p>Needs Cleaning? {{this.needs_cleaning}}</p>
-          <p>Needs Repair? {{this.needs_repair}}</p>
-        </div>
-        {{/each}}
     </div>
   </div>
 </div>

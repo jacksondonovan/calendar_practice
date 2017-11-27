@@ -9,20 +9,20 @@ const key = process.env.COOKIE_KEY || 'asdfasdf'
 router.get('/property_owner/:email',(req,res)=>{
   linkQuery.getPropertyOwner().where('email',req.params.email).first().then((data)=>{
     linkQuery.getMyBookings().where('requested_by',data.company_name).then((myBookings)=>{
-      let bookingsCompleted = 0;
-      let pendingBookings = 0;
+      let pendingBookingsList = [];
+      let bookingsCompletedList = []
       for(let i = 0; i < myBookings.length; i++){
-        if(myBookings[i].is_completed){
-          bookingsCompleted++;
+        if(!myBookings[i].is_available && !myBookings[i].is_completed){
+          pendingBookingsList.push(myBookings[i])
         }
-        if(!myBookings[i].is_available){
-          pendingBookings++;
+        if(!myBookings[i].is_available && myBookings[i].is_completed){
+          bookingsCompletedList.push(myBookings[i])
         }
       }
       res.render('property_owner_profile',{
         POdetails:data,
-        completedBookings:bookingsCompleted,
-        bookingsPending:pendingBookings
+        completedBookings:bookingsCompletedList.length,
+        bookingsPending:pendingBookingsList.length
       })
     })
   })
@@ -46,7 +46,9 @@ router.post('/property_owner/:email',(req,res)=>{
 })
 
 router.get('/service_provider/:email',(req,res)=>{
+  console.log(req.params , 'here are the params');
     linkQuery.getServiceProvider().where('email',req.params.email).first().then((data)=>{
+      console.log(data);
       linkQuery.getMyBookings().where('requested_for',data.company_name).then((myBookings)=>{
         function upcomingDate(dateSTR){        let arrDate = dateSTR.split('/')
           return arrDate[2]
@@ -73,7 +75,7 @@ router.get('/service_provider/:email',(req,res)=>{
         var justDates = [];
         var justPendings = [];
         for(let i = 0; i < myBookings.length; i++){
-          if(!myBookings[i].is_available){
+          if(!myBookings[i].is_available && !myBookings[i].is_completed){
             justDates.push(upcomingDate(myBookings[i].date_needed));
             justPendings.push(myBookings[i])
           }
@@ -187,13 +189,6 @@ router.post('/complete/service',(req,res)=>{
     })
   })
 })
-
-
-
-
-
-
-
 
 
 module.exports = router;

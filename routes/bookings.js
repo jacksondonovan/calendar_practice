@@ -9,18 +9,24 @@ router.get('/property_owner/:company_name',(req,res)=>{
     linkQuery.getMyBookings().where('requested_by',req.params.company_name).then((bookingList)=>{
       let pendingBookingsList = [];
       let openRequests = []
+      let bookingCompletedList = []
       for(let i = 0; i < bookingList.length; i++){
-        if(!bookingList[i].is_available){
+        if(!bookingList[i].is_available && !bookingList[i].is_completed){
           pendingBookingsList.push(bookingList[i])
-        } else {
+        }
+        if(bookingList[i].is_available && !bookingList[i].is_completed){
           openRequests.push(bookingList[i])
+        }
+        if(!bookingList[i].is_available && bookingList[i].is_completed){
+          bookingCompletedList.push(bookingList[i])
         }
       }
       res.render('property_owner_bookings',{
         thisPO:founduser,
         allMyBookings:bookingList,
         myPendingBookings:pendingBookingsList,
-        myOpenRequests:openRequests
+        myOpenRequests:openRequests,
+        myCompletedBookings:bookingCompletedList
       })
     })
   })
