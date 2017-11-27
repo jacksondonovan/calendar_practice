@@ -108,7 +108,7 @@ router.get('/service_provider/:email',(req,res)=>{
           if(myBookings[i].is_completed){
             bookingsCompleted++
           }
-          if(!myBookings[i].is_available){
+          if(!myBookings[i].is_available && !myBookings[i].is_completed){
             pendingBookingDates.push(upcomingDate(myBookings[i].date_needed))
           }
         }
@@ -182,45 +182,6 @@ router.post('/complete/service',(req,res)=>{
               })
             }
           }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-          // if(same_booking.needs_cleaning && same_booking.has_been_cleaned){
-          //   console.log('it needed cleaning but now has been cleaned');
-          // }
-          // if(same_booking.needs_repair && same_booking.has_been_repaired){
-          //   console.log('it needed repair but now has been repaired');
-          // }
-          // if(same_booking.has_been_checkedout){
-          //   console.log('COMPLETED BOOKING NO REPAIR NEEDED');
-          //   linkQuery.bookingCompleted(req.body).then(function(datadata){
-          //     res.redirect('/profile/service_provider/' + servicer.email)
-          //   })
-          // }
-          // if(!same_booking.needs_repair && same_booking.has_been_cleaned && same_booking.has_been_checkedout){
-          //   console.log('COMPLETED BOOKING NO REPAIR NEEDED');
-          //   linkQuery.bookingCompleted(req.body).then(function(datadata){
-          //     res.redirect('/profile/service_provider/' + servicer.email)
-          //   })
-          // }
-          // res.redirect('/profile/service_provider/' + servicer.email)
         })
       })
     })

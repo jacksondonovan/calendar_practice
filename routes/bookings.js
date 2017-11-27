@@ -39,18 +39,24 @@ router.get('/service_provider/:company_name',(req,res)=>{
     linkQuery.getMyBookings().where('requested_for',req.params.company_name).then((servicebookinglist)=>{
       let pendingBookingsList = [];
       let openRequests = []
+      let completedBookingList = []
       for(let i = 0; i < servicebookinglist.length; i++){
-        if(!servicebookinglist[i].is_available){
+        if(!servicebookinglist[i].is_available && !servicebookinglist[i].is_completed){
           pendingBookingsList.push(servicebookinglist[i])
-        } else {
+        }
+        if(servicebookinglist[i].is_available && !servicebookinglist[i].is_completed){
           openRequests.push(servicebookinglist[i])
+        }
+        if(!servicebookinglist[i].is_available && servicebookinglist[i].is_completed){
+          completedBookingList.push(servicebookinglist[i])
         }
       }
       res.render('service_provider_bookings',{
         thisSO:founduser,
         allMyBookings:servicebookinglist,
         bookingsPending:pendingBookingsList,
-        requestsOpen:openRequests
+        requestsOpen:openRequests,
+        myCompletedBookings:completedBookingList
       })
     })
   })
