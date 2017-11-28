@@ -9,24 +9,108 @@ const key = process.env.COOKIE_KEY || 'asdfasdf'
 router.get('/property_owner/:email',(req,res)=>{
   linkQuery.getPropertyOwner().where('email',req.params.email).first().then((data)=>{
     linkQuery.getMyBookings().where('requested_by',data.company_name).then((myBookings)=>{
+      function dateUpcoming(dateSTR){
+        let brokenUp = dateSTR.split('/')
+        return brokenUp[2]
+      }
+      let onlyPendingDates = [];
       let pendingBookingsList = [];
       let bookingsCompletedList = []
       for(let i = 0; i < myBookings.length; i++){
         if(!myBookings[i].is_available && !myBookings[i].is_completed){
+          onlyPendingDates.push(dateUpcoming(myBookings[i].date_needed))
           pendingBookingsList.push(myBookings[i])
         }
         if(!myBookings[i].is_available && myBookings[i].is_completed){
           bookingsCompletedList.push(myBookings[i])
         }
       }
-      res.render('property_owner_profile',{
-        POdetails:data,
-        completedBookings:bookingsCompletedList.length,
-        bookingsPending:pendingBookingsList.length
-      })
+
+      function sortBoth(arrOfDates,arrOfBookings){
+        let temp;
+        let anotherTemp;
+        let truth = true;
+        while(truth){
+          let counter = 0;
+          for(let i = 0; i < arrOfDates.length; i++){
+            if(arrOfDates[i] > arrOfDates[i+1]){
+              temp = arrOfDates[i];
+              arrOfDates[i] = arrOfDates[i+1];
+              arrOfDates[i+1] = temp;
+              temptemp = arrOfBookings[i];
+              arrOfBookings[i] = arrOfBookings[i+1];
+              arrOfBookings[i+1] = temptemp;
+              counter++;
+            }
+          }
+          if(counter === 0){
+            truth = false;
+          }
+        }
+        return arrOfBookings;
+      }
+      sortBoth(onlyPendingDates,pendingBookingsList);
+      console.log(pendingBookingsList[0].date_needed);
+      console.log(pendingBookingsList[1].date_needed);
+      console.log(pendingBookingsList[2].date_needed);
+
+      if(pendingBookingsList[0] && !pendingBookingsList[1]){
+        res.render('property_owner_profile',{
+          POdetails:data,
+          completedBookings:bookingsCompletedList.length,
+          bookingsPending:pendingBookingsList.length,
+          veryNextPending:pendingBookingsList[0],
+          veryNextScheduling:dateUpcoming(pendingBookingsList[0].date_needed)
+        })
+      }
+      if(pendingBookingsList[0] && pendingBookingsList[1] && !pendingBookingsList[2]){
+        res.render('property_owner_profile',{
+          POdetails:data,
+          completedBookings:bookingsCompletedList.length,
+          bookingsPending:pendingBookingsList.length,
+          veryNextPending:pendingBookingsList[0],
+          veryNextScheduling:dateUpcoming(pendingBookingsList[0].date_needed),
+          secondVeryNextPending:pendingBookingsList[1],
+          secondVeryNextScheduling:dateUpcoming(pendingBookingsList[1].date_needed)
+        })
+      }
+      if(pendingBookingsList[0] && pendingBookingsList[1] && pendingBookingsList[2]){
+        linkQuery.getMyBookings().where('assigned_to',pendingBookingsList[0].assigned_to).first().then((foundbook)=>{
+          linkQuery.getStaffMembers().where('first_name',foundbook.assigned_to).first().then((foundstaff)=>{
+            res.render('property_owner_profile',{
+              POdetails:data,
+              completedBookings:bookingsCompletedList.length,
+              bookingsPending:pendingBookingsList.length,
+              veryNextPending:pendingBookingsList[0],
+              veryNextScheduling:dateUpcoming(pendingBookingsList[0].date_needed),
+              secondVeryNextPending:pendingBookingsList[1],
+              secondVeryNextScheduling:dateUpcoming(pendingBookingsList[1].date_needed),
+              thirdVeryNextPending:pendingBookingsList[2],
+              thirdVeryNextScheduling:dateUpcoming(pendingBookingsList[2].date_needed),
+              firstPicture:foundstaff.photo
+            })
+          })
+        })
+      }
+      if(!pendingBookingsList[0]){
+        res.render('property_owner_profile',{
+          POdetails:data,
+          completedBookings:bookingsCompletedList.length,
+          bookingsPending:pendingBookingsList.length
+        })
+      }
     })
   })
 })
+
+
+
+
+
+
+
+
+
 
 router.post('/property_owner/:email',(req,res)=>{
   linkQuery.getPropertyOwner().where('email',req.body.email).first().then((user)=>{
@@ -50,7 +134,8 @@ router.get('/service_provider/:email',(req,res)=>{
     linkQuery.getServiceProvider().where('email',req.params.email).first().then((data)=>{
       if(data){
         linkQuery.getMyBookings().where('requested_for',data.company_name).then((myBookings)=>{
-          function upcomingDate(dateSTR){        let arrDate = dateSTR.split('/')
+          function upcomingDate(dateSTR){
+            let arrDate = dateSTR.split('/')
             return arrDate[2]
           }
           var bubble = function(arr){
