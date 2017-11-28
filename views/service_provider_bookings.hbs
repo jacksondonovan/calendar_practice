@@ -52,7 +52,7 @@
 </nav>
 <div class="container">
   <div class="row">
-    <div class="well col-sm-5">
+    <div class="well col-sm-4">
       <h3 align="center">{{thisSO.company_name}}'s Pending Bookings</h3>
       {{#each bookingsPending}}
       <div class="well">
@@ -66,10 +66,7 @@
       </div>
       {{/each}}
     </div>
-    <div class="col-sm-1">
-
-    </div>
-    <div class="well col-sm-5">
+    <div class="well col-sm-4">
         <h3 align="center">{{thisSO.company_name}}'s Available Requests</h3>
         {{#each requestsOpen}}
         <div class="well">
@@ -83,6 +80,17 @@
 
           <button type="button"><a href="/bookings/schedule/{{this.requested_for}}/{{this.id}}">Schedule Cleaning</a></button>
           <button type="button">Contact Owner</button>
+        </div>
+        {{/each}}
+    </div>
+    <div class="well col-sm-4">
+        <h3 align="center">{{thisSO.company_name}}'s Completed Requests</h3>
+        {{#each myCompletedBookings}}
+        <div class="well">
+          <h4>Request Submitted By: {{this.requested_by}}</h4>
+          <p>{{this.date_needed}}</p>
+          <p>Address: {{this.property_address}}. Unit Number: {{this.unit_number}}</p>
+          <p>Needed Cleaning? {{this.needs_cleaning}}. Needed Repair? {{this.needs_repair}}</p>
         </div>
         {{/each}}
     </div>

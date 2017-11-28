@@ -20,6 +20,7 @@ function updatePropertyOwner(obj){
   let po = obj
   return knex('property_users').select().where('id',po.id)
   .update({
+    'profile_picture':po.profile_picture,
     'first_name':po.first_name,
     'last_name':po.last_name,
     'address':po.address,
@@ -37,6 +38,7 @@ function updateServiceProvider(obj){
   return knex('service_users').select().where('id',so.id)
   .update({
     'company_name':so.company_name,
+    'profile_picture':so.profile_picture,
     'employee_count':so.employee_count,
     'company_website':so.company_website,
     'address':so.address,
@@ -81,6 +83,22 @@ function updateBookingAssigning(obj){
   })
 }
 
+function completeBooking(obj){
+  return knex('bookings').select().where('id',obj.id)
+  .update({
+    'has_been_cleaned':obj.has_been_cleaned,
+    'has_been_repaired':obj.has_been_repaired,
+    'has_been_checkedout':obj.has_been_checkedout
+  })
+}
+
+function bookingCompleted(obj){
+  return knex('bookings').select().where('id',obj.id)
+  .update({
+    'is_completed':true
+  })
+}
+
 module.exports = {
   addPropertyOwner,
   getPropertyOwner,
@@ -96,5 +114,7 @@ module.exports = {
   getMyBookings,
   getStaffMembers,
   addStaffMember,
-  updateBookingAssigning
+  updateBookingAssigning,
+  completeBooking,
+  bookingCompleted
 }

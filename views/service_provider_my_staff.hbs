@@ -53,32 +53,37 @@
 
 <div class="container">
   <div class="row">
-    <div class="well col-sm-3">
+    <div class="well col-sm-4">
       <form class="" action="/signup/staff_member" method="post">
-        <h1>Add New Staff Member</h1>
+        <h2 align="center">Add Staff Member</h2>
         <div class="">
           <label for="">First Name</label>
-          <input type="text" name="first_name">
+          <input style="width:100%" type="text" name="first_name">
         </div>
         <br>
         <div class="">
           <label for="">Last Name</label>
-          <input type="text" name="last_name">
+          <input style="width:100%" type="text" name="last_name">
+        </div>
+        <br>
+        <div class="">
+          <label for="">Photo</label>
+          <input style="width:100%" type="text" name="photo">
         </div>
         <br>
         <div class="">
           <label for="">Phone Number</label>
-          <input type="text" name="phone">
+          <input style="width:100%" type="text" name="phone">
         </div>
         <br>
         <div class="">
           <label for="">Employed By</label>
-          <input type="text" name="employed_by" value="{{SOdetails.company_name}}">
+          <input style="width:100%" type="text" name="employed_by" value="{{SOdetails.company_name}}">
         </div>
         <br>
         <div class="">
           <label for="">Account Number</label>
-          <input type="text" name="account_number">
+          <input style="width:100%" type="text" name="account_number">
         </div>
         <br>
         <button type="submit">Add Employee</button>
@@ -87,11 +92,12 @@
     <div class="col-sm-1">
 
     </div>
-    <div class="well col-sm-8">
+    <div class="well col-sm-7">
       <h3>Your Staff</h3>
       {{#each staffList}}
       <div class="well">
         <ul style="list-style:none;">
+          <li><img style="height:100px;width:120px;" src="{{this.photo}}" alt=""></li>
           <li>{{this.first_name}} {{this.last_name}}</li>
           <li>Employer: {{this.employed_by}}</li>
           <li>Phone Contact: {{this.phone}}</li>

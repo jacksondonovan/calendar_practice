@@ -9,18 +9,24 @@ router.get('/property_owner/:company_name',(req,res)=>{
     linkQuery.getMyBookings().where('requested_by',req.params.company_name).then((bookingList)=>{
       let pendingBookingsList = [];
       let openRequests = []
+      let bookingCompletedList = []
       for(let i = 0; i < bookingList.length; i++){
-        if(!bookingList[i].is_available){
+        if(!bookingList[i].is_available && !bookingList[i].is_completed){
           pendingBookingsList.push(bookingList[i])
-        } else {
+        }
+        if(bookingList[i].is_available && !bookingList[i].is_completed){
           openRequests.push(bookingList[i])
+        }
+        if(!bookingList[i].is_available && bookingList[i].is_completed){
+          bookingCompletedList.push(bookingList[i])
         }
       }
       res.render('property_owner_bookings',{
         thisPO:founduser,
         allMyBookings:bookingList,
         myPendingBookings:pendingBookingsList,
-        myOpenRequests:openRequests
+        myOpenRequests:openRequests,
+        myCompletedBookings:bookingCompletedList
       })
     })
   })
@@ -39,18 +45,24 @@ router.get('/service_provider/:company_name',(req,res)=>{
     linkQuery.getMyBookings().where('requested_for',req.params.company_name).then((servicebookinglist)=>{
       let pendingBookingsList = [];
       let openRequests = []
+      let completedBookingList = []
       for(let i = 0; i < servicebookinglist.length; i++){
-        if(!servicebookinglist[i].is_available){
+        if(!servicebookinglist[i].is_available && !servicebookinglist[i].is_completed){
           pendingBookingsList.push(servicebookinglist[i])
-        } else {
+        }
+        if(servicebookinglist[i].is_available && !servicebookinglist[i].is_completed){
           openRequests.push(servicebookinglist[i])
+        }
+        if(!servicebookinglist[i].is_available && servicebookinglist[i].is_completed){
+          completedBookingList.push(servicebookinglist[i])
         }
       }
       res.render('service_provider_bookings',{
         thisSO:founduser,
         allMyBookings:servicebookinglist,
         bookingsPending:pendingBookingsList,
-        requestsOpen:openRequests
+        requestsOpen:openRequests,
+        myCompletedBookings:completedBookingList
       })
     })
   })
@@ -77,6 +89,16 @@ router.post('/staff_scheduling',(req,res)=>{
   })
 })
 
+router.get('/complete/:company_name/:id',(req,res)=>{
+  linkQuery.getMyBookings().where('id',req.params.id).first().then((foundbooking)=>{
+    linkQuery.getServiceProvider().where('company_name',foundbooking.requested_for).first().then((servicer)=>{
+      res.render('service_provider_complete_booking',{
+        bookingDetails:foundbooking,
+        currentSO:servicer
+      })
+    })
+  })
+})
 
 
 module.exports = router;

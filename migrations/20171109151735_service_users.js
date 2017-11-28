@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('service_users',function(table){
     table.increments()
     table.string('company_name').notNullable().unique()
+    table.string('profile_picture')
     table.integer('employee_count').notNullable()
     table.string('company_website').notNullable()
     table.string('phone').notNullable()

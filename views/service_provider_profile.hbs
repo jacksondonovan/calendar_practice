@@ -70,14 +70,14 @@
       <div class="card" style="width: 20rem;padding-left:45px;">
         <div class="card-body">
           <h2 align="center" class="card-title">{{completedBookings}}</h2>
-          <h4 align="center" class="card-text">Bookings To Date</h4>
+          <h5 style="font-size:15px;" align="center" class="card-text">Bookings Completed</h5>
         </div>
       </div>
     </div>
     <div class="well col-sm-3">
       <div class="card" style="width: 20rem;padding-left:45px;">
         <div class="card-body">
-          <h2 align="center" class="card-title">{{displayRevenue}}</h2>
+          <h2 align="center" class="card-title">${{displayRevenue}}</h2>
           <h4 align="center" class="card-text">Booking Revenue</h4>
         </div>
       </div>
@@ -102,57 +102,57 @@
           <div class="col-sm-4">
             <div class="card well" style="width: 100%;opacity:1.0;">
               <h4 class="card-title">November {{nextScheduling}}</h4>
-              <img class="card-img-top" style="width:100%;height:80px;" src="http://the-gonzalezgroup.com/wp-content/uploads/2017/05/street-view.jpg" alt="Card image cap">
+              <img class="card-img-top" style="width:100%;height:80px;border:2px solid white;" src="{{nextPending.property_address}}" alt="Card image cap">
               <div class="card-body">
 
-                <p class="card-text">Address: {{nextAddress}} Unit {{nextUnit}}</p>
-                <p class="card-text">Assigned To: {{nextStaff}}</p>
+                <p class="card-text">Address: {{nextPending.property_address}} Unit {{nextPending.unit_number}}</p>
+                <p class="card-text">Assigned To: <img src="" alt=""> {{nextPending.assigned_to}}</p>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Needs Cleaning: {{nextNeedsCleaning}}</li>
-                <li class="list-group-item">Needs Repairs: {{nextNeedsRepair}}</li>
-                <li class="list-group-item">Has Checkedout: {{nextCheckoutConfirm}}</li>
+                <li class="list-group-item">Needs Cleaning: {{nextPending.needs_cleaning}}</li>
+                <li class="list-group-item">Needs Repairs: {{nextPending.needs_repair}}</li>
+                <li class="list-group-item">Has Checkedout: {{nextPending.has_been_checkedout}}</li>
               </ul>
               <div class="card-body">
-                <a href="#" class="card-link">Review Booking</a>
+                <a href="/bookings/complete/{{SOdetails.company_name}}/{{nextPending.id}}" class="card-link">Review Booking</a>
               </div>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="card well" style="width: 100%;">
               <h4 class="card-title">November {{secondNextScheduling}}</h4>
-              <img class="card-img-top" style="width:100%;height:80px;" src="http://the-gonzalezgroup.com/wp-content/uploads/2017/05/street-view.jpg" alt="Card image cap">
+              <img class="card-img-top" style="width:100%;height:80px;border:2px solid white;" src="{{secondnextPending.property_address}}" alt="Card image cap">
               <div class="card-body">
 
-                <p class="card-text">Address: {{secondnextAddress}} Unit {{secondnextUnit}}</p>
-                <p class="card-text">Assigned To: {{secondnextStaff}}</p>
+                <p class="card-text">Address: {{secondnextPending.property_address}} Unit {{secondnextPending.unit_number}}</p>
+                <p class="card-text">Assigned To: {{secondnextPending.assigned_to}}</p>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Needs Cleaning: {{secondnextNeedsCleaning}}</li>
-                <li class="list-group-item">Needs Repairs: {{secondnextNeedsRepair}}</li>
-                <li class="list-group-item">Has Checkedout: {{secondnextCheckoutConfirm}}</li>
+                <li class="list-group-item">Needs Cleaning: {{secondnextPending.needs_cleaning}}</li>
+                <li class="list-group-item">Needs Repairs: {{secondnextPending.needs_repair}}</li>
+                <li class="list-group-item">Has Checkedout: {{secondnextPending.has_been_checkedout}}</li>
               </ul>
               <div class="card-body">
-                <a href="#" class="card-link">Review Booking</a>
+                <a href="/bookings/complete/{{SOdetails.company_name}}/{{secondnextPending.id}}" class="card-link">Review Booking</a>
               </div>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="card well" style="width: 100%;">
               <h4 class="card-title">November {{thirdNextScheduling}}</h4>
-              <img class="card-img-top" style="width:100%;height:80px;" src="http://the-gonzalezgroup.com/wp-content/uploads/2017/05/street-view.jpg" alt="Card image cap">
+              <img class="card-img-top" style="width:100%;height:80px;border:2px solid white;" src="{{thirdnextPending.property_address}}" alt="Card image cap">
               <div class="card-body">
 
-                <p class="card-text">Address: {{secondnextAddress}} Unit {{thirdnextUnit}}</p>
-                <p class="card-text">Assigned To: {{thirdnextStaff}}</p>
+                <p class="card-text">Address: {{thirdnextPending.property_address}} Unit {{thirdnextPending.unit_number}}</p>
+                <p class="card-text">Assigned To: {{thirdnextPending.assigned_to}}</p>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Needs Cleaning: {{thirdnextNeedsCleaning}}</li>
-                <li class="list-group-item">Needs Repairs: {{thirdnextNeedsRepair}}</li>
-                <li class="list-group-item">Has Checkedout: {{thirdnextCheckoutConfirm}}</li>
+                <li class="list-group-item">Needs Cleaning: {{thirdnextPending.needs_cleaning}}</li>
+                <li class="list-group-item">Needs Repairs: {{thirdnextPending.needs_repair}}</li>
+                <li class="list-group-item">Has Checkedout: {{thirdnextPending.has_been_checkedout}}</li>
               </ul>
               <div class="card-body">
-                <a href="#" class="card-link">Review Booking</a>
+                <a href="/bookings/complete/{{SOdetails.company_name}}/{{thirdnextPending.id}}" class="card-link">Review Booking</a>
               </div>
             </div>
           </div>
