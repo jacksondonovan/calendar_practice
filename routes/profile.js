@@ -25,7 +25,6 @@ router.get('/property_owner/:email',(req,res)=>{
           bookingsCompletedList.push(myBookings[i])
         }
       }
-
       function sortBoth(arrOfDates,arrOfBookings){
         let temp;
         let anotherTemp;
@@ -50,10 +49,6 @@ router.get('/property_owner/:email',(req,res)=>{
         return arrOfBookings;
       }
       sortBoth(onlyPendingDates,pendingBookingsList);
-      console.log(pendingBookingsList[0].date_needed);
-      console.log(pendingBookingsList[1].date_needed);
-      console.log(pendingBookingsList[2].date_needed);
-
       if(pendingBookingsList[0] && !pendingBookingsList[1]){
         res.render('property_owner_profile',{
           POdetails:data,
