@@ -27,7 +27,7 @@
   </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" style="background-color:#33CCCC;">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -35,14 +35,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">{{POdetails.company_name}}</a>
+      <a style="color:white;" class="navbar-brand" href="#">{{POdetails.company_name}}</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Dashboard</a></li>
-        <li><a href="/bookings/property_owner/{{POdetails.company_name}}">All Leads</a></li>
-        <li><a href="/properties/property_owner/{{POdetails.company_name}}">My Properties</a></li>
-        <li><a href="/edit/property_owner/{{POdetails.email}}">Settings</a></li>
+        <li><a style="color:white;background-color:#33FFFF;" href="#">Dashboard</a></li>
+        <li><a style="color:white;" href="/bookings/property_owner/{{POdetails.company_name}}">All Leads</a></li>
+        <li><a style="color:white;" href="/properties/property_owner/{{POdetails.company_name}}">My Properties</a></li>
+        <li><a style="color:white;" href="/edit/property_owner/{{POdetails.email}}">Settings</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/">Log Out</a></li>

@@ -35,7 +35,7 @@ router.get('/property_owner/:company_name',(req,res)=>{
 router.post('/create/property_owner/:email',(req,res)=>{
   linkQuery.addBooking(req.body).then(()=>{
     linkQuery.getPropertyOwner().where('email',req.params.email).first().then((userfound)=>{
-      res.redirect('/bookings/property_owner/' + userfound.email)
+      res.redirect('/bookings/property_owner/' + userfound.company_name)
     })
   })
 })
@@ -100,5 +100,15 @@ router.get('/complete/:company_name/:id',(req,res)=>{
   })
 })
 
+router.get('/new/booking/:company_name',(req,res)=>{
+  linkQuery.getPropertyOwner().where('company_name',req.params.company_name).first().then((foundpo)=>{
+    linkQuery.getMyBookings().where('requested_for',foundpo.company_name).then((bookinglist)=>{
+      res.render('property_owner_new_booking',{
+        userdetails:foundpo,
+        allbookings:bookinglist
+      })
+    })
+  })
+})
 
 module.exports = router;

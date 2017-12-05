@@ -27,7 +27,7 @@
   </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse" style="background-color:#33CCCC;">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -35,14 +35,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">{{thisPO.company_name}}</a>
+      <a style="color:white;" class="navbar-brand" href="#">{{thisPO.company_name}}</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="/profile/property_owner/{{thisPO.email}}">Dashboard</a></li>
-        <li class="active"><a href="#">All Leads</a></li>
-        <li><a href="/properties/property_owner/{{thisPO.company_name}}">My Properties</a></li>
-        <li><a href="/edit/property_owner/{{thisPO.email}}">Settings</a></li>
+        <li><a style="color:white;" href="/profile/property_owner/{{thisPO.email}}">Dashboard</a></li>
+        <li><a style="color:white;background-color:#33FFFF;" href="#">All Leads</a></li>
+        <li><a style="color:white;" href="/properties/property_owner/{{thisPO.company_name}}">My Properties</a></li>
+        <li><a style="color:white;" href="/edit/property_owner/{{thisPO.email}}">Settings</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/">Log Out</a></li>
@@ -50,24 +50,81 @@
     </div>
   </div>
 </nav>
+<div class="container" style="position:relative;bottom:40px;">
+  <div class="row">
+    <div style="height:15px;" class="col-sm-8">
+
+    </div>
+    <div style="height:15px;" class="col-sm-2">
+      <button>Completed Bookings</button>
+    </div>
+    <div style="height:15px;" class="col-sm-2">
+      <a href="/bookings/new/booking/{{thisPO.company_name}}"><button>New Booking</button></a>
+    </div>
+  </div>
+</div>
 <div class="container">
   <div class="row">
-
-    <div class="well col-sm-3">
-      <h3 align="center">Taken Bookings</h3>
-      {{#each myPendingBookings}}
-      <div class="well">
-        <p>Submitted By: {{this.requested_by}}</p>
-        <p>Sent To: {{this.requested_for}}</p>
-        <p>Date: {{this.date_needed}}</p>
-        <p>For Address: {{this.property_address}}</p>
-        <p>Unit Number: {{this.unit_number}}</p>
-        <p>Needs Cleaning? {{this.needs_cleaning}}</p>
-        <p>Needs Repair? {{this.needs_repair}}</p>
+    <div class="well col-sm-12" style="background-color:#33CCCC">
+      <h3 style="color:white;">Pending Bookings</h3>
+      <div class="" style="display:flex;flex-direction:row;">
+        {{#each myPendingBookings}}
+        <div class="well" style="width:250px;margin:5px;">
+          <h5>{{this.date_needed}}</h5>
+          <p>Taken By: {{this.requested_for}}</p>
+          <p>Address: {{this.property_address}}</p>
+          <p>Unit Number: {{this.unit_number}}</p>
+          <p>Needs Cleaning? {{this.needs_cleaning}}</p>
+          <p>Needs Repair? {{this.needs_repair}}</p>
+        </div>
+        {{/each}}
       </div>
-      {{/each}}
     </div>
-    <div class="well col-sm-3">
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="well col-sm-12" style="background-color:#33CCCC">
+      <h3 style="color:white;">Untaken Requests</h3>
+      <div class="" style="display:flex;flex-direction:row;">
+        {{#each myOpenRequests}}
+        <div class="well" style="width:250px;margin:5px;">
+          <h5>For Date: {{this.date_needed}}</h5>
+          <p>Sent To: {{this.requested_for}}</p>
+          <p>For Address: {{this.property_address}}</p>
+          <p>Unit Number: {{this.unit_number}}</p>
+          <p>Needs Cleaning? {{this.needs_cleaning}}</p>
+          <p>Needs Repair? {{this.needs_repair}}</p>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="well col-sm-3">
       <h4 align="center">Completed Bookings</h4>
       {{#each myCompletedBookings}}
       <div class="well">
@@ -80,66 +137,7 @@
         <p>Needs Repair? {{this.needs_repair}}</p>
       </div>
       {{/each}}
-    </div>
-    <div class="well col-sm-3">
-        <h3 align="center">Open Requests</h3>
-        {{#each myOpenRequests}}
-        <div class="well">
-          <p>Submitted By: {{this.requested_by}}</p>
-          <p>Sent To: {{this.requested_for}}</p>
-          <p>Date: {{this.date_needed}}</p>
-          <p>For Address: {{this.property_address}}</p>
-          <p>Unit Number: {{this.unit_number}}</p>
-          <p>Needs Cleaning? {{this.needs_cleaning}}</p>
-          <p>Needs Repair? {{this.needs_repair}}</p>
-        </div>
-        {{/each}}
-    </div>
-    <div class="well col-sm-3">
-      <header>
-        <h3 align="center">Create New Booking</h3>
-        <hr>
-      </header>
-      <form action="/bookings/create/property_owner/{{thisPO.email}}" method="post">
-        <div class="">
-          <label for="">Services Needed By</label>
-          <input type="text" name="requested_by" value="{{thisPO.company_name}}">
-        </div>
-        <br>
-        <div class="">
-          <label for="">Services Request For</label>
-          <input type="text" name="requested_for">
-        </div>
-        <br>
-        <div class="">
-          <label for="">Date (YYYY/MM/DD)</label>
-          <input type="text" name="date_needed">
-        </div>
-        <br>
-        <div class="">
-          <label for="">Property Address</label>
-          <input type="text" name="property_address">
-        </div>
-        <br>
-        <div class="">
-          <label for="">Address Unit Number</label>
-          <input type="text" name="unit_number">
-        </div>
-        <br>
-        <div class="">
-          <label for="">Needs Cleaning?</label>
-          <input type="text" name="needs_cleaning">
-        </div>
-        <br>
-        <div class="">
-          <label for="">Needs Repair?</label>
-          <input type="text" name="needs_repair">
-        </div>
-        <br>
-        <button type="submit">Create Booking Request</button>
-      </form>
-    </div>
-  </div>
-</div>
+    </div> -->
+
 </body>
 </html>
