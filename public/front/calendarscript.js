@@ -1,10 +1,10 @@
 
 
 function calendarDates(arrOfNums){
+  let classNumbers = []
   for (let i = 0; i < arrOfNums.length; i++) {
-    let turnIntoNum = ++arrOfNums[i]
-    turnIntoNum--
-    switch (turnIntoNum) {
+    let numbervalue = arrOfNums[i]--;
+    switch (numbervalue) {
       case 1:
         console.log('booking on the first');
         break;
@@ -42,8 +42,7 @@ function calendarDates(arrOfNums){
         console.log('booking on the twelth');
         break;
       case 13:
-        let currentCell = document.getElementsByClassName('thirteenth');
-        currentCell.style.backgroundColor = "#000;"
+        classNumbers.push('thirteen')
         console.log('booking on the 13th');
         break;
       case 14:
@@ -89,9 +88,11 @@ function calendarDates(arrOfNums){
         console.log('booking on the 27th');
         break;
       case 28:
+        classNumbers.push('twenty-eight')
         console.log('booking on the 28th');
         break;
       case 29:
+        classNumbers.push('twenty-nine')
         console.log('booking on the 29th');
         break;
       case 30:
@@ -104,6 +105,7 @@ function calendarDates(arrOfNums){
 
     }
   }
+  return classNumbers;
 }
 
 

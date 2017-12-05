@@ -49,6 +49,7 @@ router.get('/property_owner/:email',(req,res)=>{
         return arrOfBookings;
       }
       function calendarDates(arrOfNums){
+        let classNumbers = []
         for (let i = 0; i < arrOfNums.length; i++) {
           switch (arrOfNums[i]) {
             case 1:
@@ -88,6 +89,7 @@ router.get('/property_owner/:email',(req,res)=>{
               console.log('booking on the twelth');
               break;
             case 13:
+              classNumbers.push('thirteen')
               console.log('booking on the 13th');
               break;
             case 14:
@@ -133,9 +135,11 @@ router.get('/property_owner/:email',(req,res)=>{
               console.log('booking on the 27th');
               break;
             case 28:
+              classNumbers.push('twenty-eight')
               console.log('booking on the 28th');
               break;
             case 29:
+            classNumbers.push('twenty-nine')
               console.log('booking on the 29th');
               break;
             case 30:
@@ -148,9 +152,10 @@ router.get('/property_owner/:email',(req,res)=>{
 
           }
         }
+        return classNumbers;
       }
       sortBoth(onlyPendingDates,pendingBookingsList);
-      calendarDates(onlyPendingDates)
+      let arrayofclasses = calendarDates(onlyPendingDates)
       if(pendingBookingsList[0] && !pendingBookingsList[1]){
         res.render('property_owner_profile',{
           POdetails:data,
@@ -254,10 +259,10 @@ router.get('/service_provider/:email',(req,res)=>{
             }
           }
           function calendarDates(arrOfNums){
+            let classNumbers = []
             for (let i = 0; i < arrOfNums.length; i++) {
-              let turnIntoNum = ++arrOfNums[i]
-              turnIntoNum--
-              switch (turnIntoNum) {
+              let numbervalue = arrOfNums[i]--;
+              switch (numbervalue) {
                 case 1:
                   console.log('booking on the first');
                   break;
@@ -295,8 +300,7 @@ router.get('/service_provider/:email',(req,res)=>{
                   console.log('booking on the twelth');
                   break;
                 case 13:
-                  // let currentCell = document.getElementsByClassName('thirteenth');
-                  // currentCell.style.backgroundColor = "#000;"
+                  classNumbers.push('thirteen')
                   console.log('booking on the 13th');
                   break;
                 case 14:
@@ -342,9 +346,11 @@ router.get('/service_provider/:email',(req,res)=>{
                   console.log('booking on the 27th');
                   break;
                 case 28:
+                  classNumbers.push('twenty-eight')
                   console.log('booking on the 28th');
                   break;
                 case 29:
+                  classNumbers.push('twenty-nine')
                   console.log('booking on the 29th');
                   break;
                 case 30:
@@ -357,6 +363,7 @@ router.get('/service_provider/:email',(req,res)=>{
 
               }
             }
+            return classNumbers;
           }
           function anotherBubble(pendingarr,pendingdates){
             let temp;
@@ -383,7 +390,7 @@ router.get('/service_provider/:email',(req,res)=>{
           }
           anotherBubble(justPendings,justDates)
           console.log(justDates);
-          calendarDates(justDates)
+          let allclassdates = calendarDates(justDates)
           let bookingsCompleted = 0;
           let pendingBookingDates = []
           for(let i = 0; i < myBookings.length; i++){
@@ -428,7 +435,8 @@ router.get('/service_provider/:email',(req,res)=>{
               secondnextPending:justPendings[1],
               secondNextScheduling:upcomingDate(justPendings[1].date_needed),
               thirdnextPending:justPendings[2],
-              thirdNextScheduling:upcomingDate(justPendings[2].date_needed)
+              thirdNextScheduling:upcomingDate(justPendings[2].date_needed),
+              testclass:allclassdates[0]
             })
           }
           if(!justPendings[0]){
