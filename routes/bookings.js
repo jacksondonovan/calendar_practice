@@ -35,7 +35,7 @@ router.get('/property_owner/:company_name',(req,res)=>{
 router.post('/create/property_owner/:email',(req,res)=>{
   linkQuery.addBooking(req.body).then(()=>{
     linkQuery.getPropertyOwner().where('email',req.params.email).first().then((userfound)=>{
-      res.redirect('/bookings/property_owner/' + userfound.email)
+      res.redirect('/bookings/property_owner/' + userfound.company_name)
     })
   })
 })
@@ -45,7 +45,6 @@ router.get('/service_provider/:company_name',(req,res)=>{
     linkQuery.getMyBookings().where('requested_for',req.params.company_name).then((servicebookinglist)=>{
       let pendingBookingsList = [];
       let openRequests = []
-      let completedBookingList = []
       for(let i = 0; i < servicebookinglist.length; i++){
         if(!servicebookinglist[i].is_available && !servicebookinglist[i].is_completed){
           pendingBookingsList.push(servicebookinglist[i])
@@ -53,16 +52,12 @@ router.get('/service_provider/:company_name',(req,res)=>{
         if(servicebookinglist[i].is_available && !servicebookinglist[i].is_completed){
           openRequests.push(servicebookinglist[i])
         }
-        if(!servicebookinglist[i].is_available && servicebookinglist[i].is_completed){
-          completedBookingList.push(servicebookinglist[i])
-        }
       }
       res.render('service_provider_bookings',{
         thisSO:founduser,
         allMyBookings:servicebookinglist,
         bookingsPending:pendingBookingsList,
-        requestsOpen:openRequests,
-        myCompletedBookings:completedBookingList
+        requestsOpen:openRequests
       })
     })
   })
@@ -100,5 +95,26 @@ router.get('/complete/:company_name/:id',(req,res)=>{
   })
 })
 
+router.get('/new/booking/:company_name',(req,res)=>{
+  linkQuery.getPropertyOwner().where('company_name',req.params.company_name).first().then((foundpo)=>{
+    linkQuery.getMyBookings().where('requested_for',foundpo.company_name).then((bookinglist)=>{
+      res.render('property_owner_new_booking',{
+        userdetails:foundpo,
+        allbookings:bookinglist
+      })
+    })
+  })
+})
+
+router.get('/finished/:company_name',(req,res)=>{
+  linkQuery.getServiceProvider().where('company_name',req.params.company_name).first().then((foundSO)=>{
+    linkQuery.getMyBookings().where('requested_for',foundSO.company_name).then((allcompleted)=>{
+      res.render('service_provider_finished_bookings',{
+        thisSO:foundSO,
+        myCompletedBookings:allcompleted
+      })
+    })
+  })
+})
 
 module.exports = router;

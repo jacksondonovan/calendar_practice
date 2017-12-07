@@ -8,6 +8,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
+    .tjblue {
+      background-color: #33CCCC;
+    }
+    .highlighted {
+      background-color: #33FFFF;
+    }
     /* Remove the navbar's default rounded borders and increase the bottom margin */
     .navbar {
       margin-bottom: 50px;
@@ -27,7 +33,7 @@
   </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse tjblue">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -35,14 +41,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">{{change_servicer.company_name}}</a>
+      <a style="color:white;" class="navbar-brand" href="#">{{change_servicer.company_name}}</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="/edit/service_provider/nevermindedited/{{change_servicer.email}}"> Dashboard</a></li>
-        <li><a href="/bookings/service_provider/{{change_servicer.company_name}}">Booking Log</a></li>
-        <li><a href="/service_staff/service_provider/{{change_servicer.company_name}}">My Staff</a></li>
-        <li class="active"><a href="#">Settings</a></li>
+        <li><a style="color:white;" href="/edit/service_provider/nevermindedited/{{change_servicer.email}}"> Dashboard</a></li>
+        <li><a style="color:white;" href="/bookings/service_provider/{{change_servicer.company_name}}">Booking Log</a></li>
+        <li><a style="color:white;" href="/service_staff/service_provider/{{change_servicer.company_name}}">My Staff</a></li>
+        <li class="highlighted"><a href="#">Settings</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/">Log Out</a></li>
@@ -52,7 +58,7 @@
 </nav>
 <div class="container">
   <div class="row">
-    <div class="well col-sm-3">
+    <div class="well col-sm-3 tjblue">
       <div>
 
         <h2>Edit Profile</h2>
@@ -105,7 +111,7 @@
   </div>
   <div class="container">
     <div class="row">
-      <figure class="well col-sm-3" style="width:250px;">
+      <figure class="well col-sm-3 tjblue" style="width:250px;">
         <div class="">
           <h3>Delete Account?</h3>
           <a href="/edit/service_provider/delete/{{change_servicer.id}}">See Details</a>

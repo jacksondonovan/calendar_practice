@@ -11,7 +11,7 @@ router.get('/property_owner/:email',(req,res)=>{
     linkQuery.getMyBookings().where('requested_by',data.company_name).then((myBookings)=>{
       function dateUpcoming(dateSTR){
         let brokenUp = dateSTR.split('/')
-        return brokenUp[2]
+        return Number(brokenUp[2])
       }
       let onlyPendingDates = [];
       let pendingBookingsList = [];
@@ -231,25 +231,6 @@ router.get('/service_provider/:email',(req,res)=>{
             let arrDate = dateSTR.split('/')
             return arrDate[2]
           }
-          var bubble = function(arr){
-            let temp
-            let truth = true;
-            while(truth){
-              let counter = 0;
-              for(let i = 0; i < arr.length; i++){
-                if(arr[i+1] < arr[i]){
-                  temp = arr[i];
-                  arr[i] = arr[i+1];
-                  arr[i+1] = temp;
-                  counter++;
-                }
-              }
-              if(counter === 0){
-                truth = false;
-              }
-            }
-            return arr;
-          }
           var justDates = [];
           var justPendings = [];
           for(let i = 0; i < myBookings.length; i++){
@@ -366,6 +347,9 @@ router.get('/service_provider/:email',(req,res)=>{
             return classNumbers;
           }
           function anotherBubble(pendingarr,pendingdates){
+            for (var i = 0; i < pendingdates.length; i++) {
+              pendingdates[i] = ++pendingdates[i]
+            }
             let temp;
             let newtemp;
             let truth = true;
@@ -386,10 +370,10 @@ router.get('/service_provider/:email',(req,res)=>{
                 truth = false;
               }
             }
+            console.log('is this happening?' , pendingdates);
             return pendingarr;
           }
           anotherBubble(justPendings,justDates)
-          console.log(justDates);
           let allclassdates = calendarDates(justDates)
           let bookingsCompleted = 0;
           let pendingBookingDates = []
