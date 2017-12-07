@@ -62,14 +62,25 @@
     <div class="well col-sm-7 tjblue">
       <h3>Your Staff</h3>
       {{#each staffList}}
-      <div class="well">
-        <ul style="list-style:none;">
-          <li><img style="height:100px;width:120px;" src="{{this.photo}}" alt=""></li>
-          <li>{{this.first_name}} {{this.last_name}}</li>
-          <li>Employer: {{this.employed_by}}</li>
-          <li>Phone Contact: {{this.phone}}</li>
-          <li>Account Number: {{this.account_number}}</li>
-        </ul>
+      <div class="well" style="display:flex;flex-direction:row;">
+        <div class="" style="margin-bottom:-120px;">
+          <h5 style="margin-top:-17px;">Employee ID: 00{{this.id}}</h5>
+          <h6>Account Number: {{this.account_number}}</h6>
+        </div>
+        <div class="col-sm-1">
+
+        </div>
+        <div class="">
+          <img style="height:120px;width:160px;" src="{{this.photo}}" alt="">
+        </div>
+        <div class="">
+          <ul style="list-style:none;">
+            <h4>{{this.first_name}} {{this.last_name}}</h4>
+            <h5>Employer: {{this.employed_by}}</h5>
+            <li>Phone Contact: {{this.phone}}</li>
+            <li>Email: WIPstaff@portal.com</li>
+          </ul>
+        </div>
       </div>
       {{/each}}
     </div>
