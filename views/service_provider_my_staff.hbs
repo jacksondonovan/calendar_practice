@@ -8,6 +8,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
+    .tjblue {
+      background-color: #33CCCC;
+    }
+    .highlighted {
+      background-color: #33FFFF;
+    }
     /* Remove the navbar's default rounded borders and increase the bottom margin */
     .navbar {
       margin-bottom: 50px;
@@ -27,7 +33,7 @@
   </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse tjblue">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -35,14 +41,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">{{SOdetails.company_name}}</a>
+      <a style="color:white;" class="navbar-brand" href="#">{{SOdetails.company_name}}</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="/edit/service_provider/nevermindedited/{{SOdetails.email}}"> Dashboard</a></li>
-        <li><a href="/bookings/service_provider/{{SOdetails.company_name}}">Booking Log</a></li>
-        <li class="active"><a href="#">My Staff</a></li>
-        <li><a href="/edit/service_provider/{{SOdetails.email}}">Settings</a></li>
+        <li><a style="color:white;" href="/edit/service_provider/nevermindedited/{{SOdetails.email}}"> Dashboard</a></li>
+        <li><a style="color:white;" href="/bookings/service_provider/{{SOdetails.company_name}}">Booking Log</a></li>
+        <li><a class="highlighted" href="#">My Staff</a></li>
+        <li><a style="color:white;" href="/edit/service_provider/{{SOdetails.email}}">Settings</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/">Log Out</a></li>
@@ -53,7 +59,24 @@
 
 <div class="container">
   <div class="row">
-    <div class="well col-sm-4">
+    <div class="well col-sm-7 tjblue">
+      <h3>Your Staff</h3>
+      {{#each staffList}}
+      <div class="well">
+        <ul style="list-style:none;">
+          <li><img style="height:100px;width:120px;" src="{{this.photo}}" alt=""></li>
+          <li>{{this.first_name}} {{this.last_name}}</li>
+          <li>Employer: {{this.employed_by}}</li>
+          <li>Phone Contact: {{this.phone}}</li>
+          <li>Account Number: {{this.account_number}}</li>
+        </ul>
+      </div>
+      {{/each}}
+    </div>
+    <div class="col-sm-1">
+
+    </div>
+    <div class="well col-sm-4 tjblue">
       <form class="" action="/signup/staff_member" method="post">
         <h2 align="center">Add Staff Member</h2>
         <div class="">
@@ -89,23 +112,8 @@
         <button type="submit">Add Employee</button>
       </form>
     </div>
-    <div class="col-sm-1">
 
-    </div>
-    <div class="well col-sm-7">
-      <h3>Your Staff</h3>
-      {{#each staffList}}
-      <div class="well">
-        <ul style="list-style:none;">
-          <li><img style="height:100px;width:120px;" src="{{this.photo}}" alt=""></li>
-          <li>{{this.first_name}} {{this.last_name}}</li>
-          <li>Employer: {{this.employed_by}}</li>
-          <li>Phone Contact: {{this.phone}}</li>
-          <li>Account Number: {{this.account_number}}</li>
-        </ul>
-      </div>
-      {{/each}}
-    </div>
+
   </div>
 </div>
 </body>

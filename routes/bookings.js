@@ -111,4 +111,15 @@ router.get('/new/booking/:company_name',(req,res)=>{
   })
 })
 
+router.get('/finished/:company_name',(req,res)=>{
+  linkQuery.getServiceProvider().where('company_name',req.params.company_name).first().then((foundSO)=>{
+    linkQuery.getMyBookings().where('requested_for',foundSO.company_name).then((allcompleted)=>{
+      res.render('service_provider_finished_bookings',{
+        thisSO:foundSO,
+        myCompletedBookings:allcompleted
+      })
+    })
+  })
+})
+
 module.exports = router;

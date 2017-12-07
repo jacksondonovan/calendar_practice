@@ -8,6 +8,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
+    .tjblue {
+      background-color: #33CCCC;
+    }
     /* Remove the navbar's default rounded borders and increase the bottom margin */
     .navbar {
       margin-bottom: 50px;
@@ -27,7 +30,7 @@
   </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse tjblue">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -35,14 +38,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">{{userdetails.company_name}}</a>
+      <a style="color:white;" class="navbar-brand" href="#">{{userdetails.company_name}}</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="/edit/property_owner/nevermindedited/{{userdetails.email}}"> Dashboard</a></li>
-        <li class="active"><a href="/bookings/property_owner/{{userdetails.company_name}}">All Leads</a></li>
-        <li><a href="#">My Properties</a></li>
-        <li><a href="/edit/property_owner/{{userdetails.email}}">Settings</a></li>
+        <li><a style="color:white;" class="tjblue" href="/edit/property_owner/nevermindedited/{{userdetails.email}}"> Dashboard</a></li>
+        <li><a style="background-color:#33FFFF;color:white;" href="/bookings/property_owner/{{userdetails.company_name}}">All Leads</a></li>
+        <li><a style="color:white;" href="/properties/property_owner/{{userdetails.company_name}}">My Properties</a></li>
+        <li><a style="color:white;" href="/edit/property_owner/{{userdetails.email}}">Settings</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/">Log Out</a></li>

@@ -41,14 +41,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a style="color:white;" class="navbar-brand" href="#">{{currentSO.company_name}}</a>
+      <a style="color:white;" class="navbar-brand" href="#">{{thisSO.company_name}}</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a style="color:white;" href="/edit/service_provider/nevermindedited/{{currentSO.email}}"> Dashboard</a></li>
-        <li class="highlighted"><a href="/bookings/service_provider/{{currentSO.company_name}}">Booking Log</a></li>
-        <li><a style="color:white;" href="/service_staff/service_provider/{{currentSO.company_name}}">My Staff</a></li>
-        <li ><a style="color:white;" href="/edit/service_provider/{{currentSO.email}}">Settings</a></li>
+        <li><a style="color:white;" href="/profile/service_provider/{{thisSO.email}}">Dashboard</a></li>
+        <li class="highlighted"><a style="color:gray;" href="/bookings/service_provider/{{thisSO.company_name}}">Booking Log</a></li>
+        <li><a style="color:white;" href="/service_staff/service_provider/{{thisSO.company_name}}">My Staff</a></li>
+        <li><a style="color:white;" href="/edit/service_provider/{{thisSO.email}}">Settings</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a style="color:white;" href="/">Log Out</a></li>
@@ -56,41 +56,21 @@
     </div>
   </div>
 </nav>
-
 <div class="container">
   <div class="row">
-    <div class="well col-sm-4 tjblue">
-      <figure>
-        <h2>Services needed from {{bookingDetails.requested_by}}</h2>
-        <h5>Date: {{bookingDetails.date_needed}}</h5>
-        <p>Property: {{bookingDetails.property_address}}</p>
-        <p>Unit Number: {{bookingDetails.unit_number}}</p>
-
-        <form class="" action="/bookings/staff_scheduling" method="post">
-          <input hidden type="text" name="id" value="{{bookingDetails.id}}">
-          <div class="">
-            <label for="">Assign to staff member</label>
-            <input type="text" name="assigned_to" required>
-          </div>
-          <br>
-          <div class="">
-            <label for="">During hour:</label>
-            <input type="text" name="hour_to_be_completed" required>
-          </div>
-          <br>
-          <input hidden type="boolean" name="is_available" value="false">
-          <button type="submit">Schedule Booking</button>
-        </form>
-      </figure>
+    <div class="well col-sm-4" style="background-color:#33CCCC;">
+        <h3 style="color:white;" align="center">Your Completed Requests</h3>
+        {{#each myCompletedBookings}}
+        <div class="well">
+          <h4>Request By: {{this.requested_by}}</h4>
+          <p>Completed On: {{this.date_needed}}</p>
+          <p>By: {{this.assigned_to}}</p>
+          <p>Address: {{this.property_address}}. Unit Number: {{this.unit_number}}</p>
+          <p>Needed Cleaning? {{this.needs_cleaning}}. Needed Repair? {{this.needs_repair}}</p>
+        </div>
+        {{/each}}
     </div>
-
   </div>
-
 </div>
-
-
-
-
-
 </body>
 </html>

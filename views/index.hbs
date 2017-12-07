@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="/stylesheets/main.css">
   <link rel="shortcut icon" href="">
   <style>
+    .tjblue {
+      background-color: #33CCCC;
+    }
     /* Add a gray background color and some padding to the footer */
     footer {
       background-color: #f2f2f2;
@@ -31,7 +34,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse tjblue">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -39,13 +42,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Trader Jack</a>
+      <a style="color:white;" class="navbar-brand" href="#">Trader Jack</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a style="background-color:#33FFFF;color:white;" href="#">Home</a></li>
+        <li><a style="color:white;" href="#">About</a></li>
+        <li><a style="color:white;" href="#">Contact</a></li>
       </ul>
     </div>
   </div>
@@ -55,9 +58,9 @@
 <div class="row">
   <div class="col-sm-5">
 
-    <div  class="well tallwell" align="center">
+    <div  class="well tallwell tjblue" align="center">
       <div style="position:relative;bottom:30px;" class="">
-        <h2 style="">Property Owner</h2>
+        <h2 style="color:white;">Property Owner</h2>
         <div class="" style="display:flex;flex-direction:row;">
           <form class="" action="/login/property_owner" method="post">
             <input hidden type="text" name="id" value="{{POdetails.id}}">
@@ -83,9 +86,9 @@
     <img style="height:140px;width:80%;" src="./images/tjlogo.png" alt="">
   </div>
   <div class="col-sm-5">
-    <div class="well tallwell" align="center">
+    <div class="well tallwell tjblue" align="center">
       <div style="position:relative;bottom:30px;" class="">
-        <h2>Service Provider</h2>
+        <h2 style="color:white;">Service Provider</h2>
         <div class="" style="display:flex;flex-direction:row;">
         <form class="" action="/login/service_provider" method="post">
           <input hidden type="text" name="id" value="{{SOdetails.id}}">
@@ -211,7 +214,7 @@
   </div>
 </div><br>
 
-<footer class="container-fluid text-center">
+<footer class="container-fluid text-center tjblue">
   <h4>Trader Jack</h4>
   <p>Copyright 2017</p>
 </footer>
