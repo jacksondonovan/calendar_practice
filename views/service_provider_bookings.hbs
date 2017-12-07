@@ -74,10 +74,9 @@
   <div class="container">
     <div class="row" style="margin-top:-35px;">
       <div class="well col-sm-12" style="background-color:#33CCCC">
-
-          <div class="" style="width:250px;margin:5px;">
+          <div class="" style="display:flex;flex-direction:row;justify-content:left;">
             {{#each requestsOpen}}
-            <div class="well">
+            <div class="well" style="margin:5px;">
               <h4>{{this.date_needed}}</h4>
               <h5>Submitted By: {{this.requested_by}}</h5>
               <p>Address: {{this.property_address}}. Unit Number: {{this.unit_number}}</p>
