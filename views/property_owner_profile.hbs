@@ -32,6 +32,9 @@
     table{
       height:350px;
     }
+    .navbar-nav li a{
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -47,7 +50,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a style="color:white;background-color:#33FFFF;" href="#">Dashboard</a></li>
+        <li><a style="color:gray;background-color:#33FFFF;" href="#">Dashboard</a></li>
         <li><a style="color:white;" href="/bookings/property_owner/{{POdetails.company_name}}">All Leads</a></li>
         <li><a style="color:white;" href="/properties/property_owner/{{POdetails.company_name}}">My Properties</a></li>
         <li><a style="color:white;" href="/edit/property_owner/{{POdetails.email}}">Settings</a></li>

@@ -8,6 +8,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
+    .navbar-nav li a{
+      font-weight: bold;
+    }
     .tjblue {
       background-color: #33CCCC;
     }
@@ -69,13 +72,13 @@
         <form class="" action="/bookings/staff_scheduling" method="post">
           <input hidden type="text" name="id" value="{{bookingDetails.id}}">
           <div class="">
-            <label for="">Assign to staff member</label>
+            <label for="">Assign to staff member:</label>
             <input type="text" name="assigned_to" required>
           </div>
           <br>
           <div class="">
             <label for="">During hour:</label>
-            <input type="text" name="hour_to_be_completed" required>
+            <input style="margin-left:76px;" type="text" name="hour_to_be_completed" required>
           </div>
           <br>
           <input hidden type="boolean" name="is_available" value="false">

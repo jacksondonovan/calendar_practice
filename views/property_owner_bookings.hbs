@@ -8,6 +8,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
+    .navbar-nav li a{
+      font-weight: bold;
+    }
     /* Remove the navbar's default rounded borders and increase the bottom margin */
     .navbar {
       margin-bottom: 50px;
@@ -40,7 +43,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a style="color:white;" href="/profile/property_owner/{{thisPO.email}}">Dashboard</a></li>
-        <li><a style="color:white;background-color:#33FFFF;" href="#">All Leads</a></li>
+        <li><a style="color:gray;background-color:#33FFFF;" href="#">All Leads</a></li>
         <li><a style="color:white;" href="/properties/property_owner/{{thisPO.company_name}}">My Properties</a></li>
         <li><a style="color:white;" href="/edit/property_owner/{{thisPO.email}}">Settings</a></li>
       </ul>

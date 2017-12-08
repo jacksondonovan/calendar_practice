@@ -16,7 +16,9 @@
       margin-bottom: 50px;
       border-radius: 0;
     }
-
+    .navbar-nav li a{
+      font-weight: bold;
+    }
     /* Remove the jumbotron's default bottom margin */
      .jumbotron {
       margin-bottom: 0;
@@ -43,7 +45,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a style="color:white;" class="tjblue" href="/edit/property_owner/nevermindedited/{{userdetails.email}}"> Dashboard</a></li>
-        <li><a style="background-color:#33FFFF;color:white;" href="/bookings/property_owner/{{userdetails.company_name}}">All Leads</a></li>
+        <li><a style="background-color:#33FFFF;color:gray;" href="/bookings/property_owner/{{userdetails.company_name}}">All Leads</a></li>
         <li><a style="color:white;" href="/properties/property_owner/{{userdetails.company_name}}">My Properties</a></li>
         <li><a style="color:white;" href="/edit/property_owner/{{userdetails.email}}">Settings</a></li>
       </ul>
