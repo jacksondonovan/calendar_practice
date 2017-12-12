@@ -409,7 +409,6 @@ router.get('/service_provider/:email',(req,res)=>{
             })
           }
           if(justPendings[0] && justPendings[1] && justPendings[2]){
-            console.log(justPendings[0]);
             res.render('service_provider_profile',{
               SOdetails:data,
               totalBookings:pendingBookingDates.length,
@@ -421,7 +420,9 @@ router.get('/service_provider/:email',(req,res)=>{
               secondNextScheduling:upcomingDate(justPendings[1].date_needed),
               thirdnextPending:justPendings[2],
               thirdNextScheduling:upcomingDate(justPendings[2].date_needed),
-              testclass:allclassdates[0]
+              nextPropertyPhoto:justPendings[0].property_photo,
+              secondNextPropertyPhoto:justPendings[1].property_photo,
+              thirdNextPropertyPhoto:justPendings[2].property_photo
             })
           }
           if(!justPendings[0]){

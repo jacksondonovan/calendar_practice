@@ -25,8 +25,12 @@
       padding: 25px;
     }
     html, body {
-    margin: 0;
-    height: 100%;
+      margin: 0;
+      height: 100%;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
     }
     .tjblue{
       background-color: #33CCCC;
@@ -60,9 +64,9 @@
     </div>
   </div>
 </nav>
-<main style="width:100%;margin-bottom:100px;">
-  <div class="container" style="background-color:#33CCCC;height:100px;">
-    <div class="row">
+<main style="width:100%;">
+  <div class="container" style="background-color:#33CCCC;height:100px;" >
+    <div class="row" style="margin:0;padding:0;">
       <div class="col-sm-3">
         <h3 style="color:white;" align="">Available Requests</h3>
       </div>
@@ -79,11 +83,16 @@
       <div class="well col-sm-12" style="background-color:#33CCCC">
           <div class="" style="display:flex;flex-direction:row;justify-content:left;">
             {{#each requestsOpen}}
-            <div class="well" style="margin:5px;">
-              <h4>{{this.date_needed}}</h4>
-              <h5>Submitted By: {{this.requested_by}}</h5>
-              <p>Address: {{this.property_address}}. Unit Number: {{this.unit_number}}</p>
-              <p>Needs Cleaning? {{this.needs_cleaning}}. Needs Repair? {{this.needs_repair}}</p>
+            <div class="well" style="background-image: url('{{this.property_photo}}');opcaity:0.5;" style="margin:5px;">
+              <h5 style="color:white;">Submitted By: {{this.requested_by}}</h5>
+              <h4 style="margin-bottom:100px;color:white;">{{this.date_needed}}</h4>
+
+              <div class="well" style="padding:0;margin5px;">
+                <p>Address: {{this.property_address}}. Unit Number: {{this.unit_number}}</p>
+                <p>Needs Cleaning? {{this.needs_cleaning}}. Needs Repair? {{this.needs_repair}}</p>
+              </div>
+
+              <!-- <img src="{{this.property_photo}}" alt=""> -->
               <button type="button"><a href="/bookings/schedule/{{this.requested_for}}/{{this.id}}">Schedule Cleaning</a></button>
               <button type="button">Contact Owner</button>
             </div>
@@ -98,12 +107,12 @@
         <h3 style="color:white;" align="left">Pending Bookings</h3>
         <div class="" style="display:flex;flex-direction:row;">
           {{#each bookingsPending}}
-          <div class="well" style="width:250px;margin:5px;">
-            <h4>{{this.date_needed}}</h4>
-            <h5>Submitted By: {{this.requested_by}}</h5>
-            <p>Staff: {{this.assigned_to}}</p>
-            <p>Address: {{this.property_address}}. Unit Number: {{this.unit_number}}</p>
-            <p>Needs Cleaning? {{this.needs_cleaning}}. Needs Repair? {{this.needs_repair}}</p>
+          <div class="well" style="width:270px;height:300px;margin:5px;background-image: url('{{this.property_photo}}');background-size:cover;">
+            <h4 style="color:white;">{{this.date_needed}}</h4>
+            <h5 style="color:white;">Submitted By: {{this.requested_by}}</h5>
+            <p style="color:white;">Staff: {{this.assigned_to}}</p>
+            <p style="color:white;">Address: {{this.property_address}}. Unit Number: {{this.unit_number}}</p>
+            <p style="color:white;">Needs Cleaning? {{this.needs_cleaning}}. Needs Repair? {{this.needs_repair}}</p>
           </div>
           {{/each}}
         </div>
