@@ -9,7 +9,7 @@ exports.up = function(knex, Promise) {
     table.string('date_needed').notNullable()
     table.string('property_address').references('property_address').inTable('property_addresses').notNullable()
     table.integer('unit_number').references('unit_number').inTable('property_addresses')
-    table.text('property_photo').references('property_photo').inTable('property_addresses')
+    table.string('property_photo').references('property_photo').inTable('property_addresses').notNullable()
     table.boolean('needs_cleaning').notNullable()
     table.boolean('needs_repair').notNullable()
     table.boolean('has_been_cleaned').defaultTo(false)

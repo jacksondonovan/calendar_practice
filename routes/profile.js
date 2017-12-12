@@ -409,6 +409,7 @@ router.get('/service_provider/:email',(req,res)=>{
             })
           }
           if(justPendings[0] && justPendings[1] && justPendings[2]){
+            console.log(justPendings[0]);
             res.render('service_provider_profile',{
               SOdetails:data,
               totalBookings:pendingBookingDates.length,
