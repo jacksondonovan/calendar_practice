@@ -72,13 +72,13 @@
       <h3 style="color:white;">Pending Bookings</h3>
       <div class="" style="display:flex;flex-direction:row;">
         {{#each myPendingBookings}}
-        <div class="well" style="width:250px;margin:5px;">
-          <h5>{{this.date_needed}}</h5>
-          <p>Taken By: {{this.requested_for}}</p>
-          <p>Address: {{this.property_address}}</p>
-          <p>Unit Number: {{this.unit_number}}</p>
-          <p>Needs Cleaning? {{this.needs_cleaning}}</p>
-          <p>Needs Repair? {{this.needs_repair}}</p>
+        <div class="well" style="width:250px;margin:5px;background-image: url('{{this.property_photo}}');background-size:cover;">
+          <h5 style="color:white;">{{this.date_needed}}</h5>
+          <p style="color:white;">Taken By: {{this.requested_for}}</p>
+          <p style="color:white;">Address: {{this.property_address}}</p>
+          <p style="color:white;">Unit Number: {{this.unit_number}}</p>
+          <p style="color:white;">Needs Cleaning? {{this.needs_cleaning}}</p>
+          <p style="color:white;">Needs Repair? {{this.needs_repair}}</p>
         </div>
         {{/each}}
       </div>
@@ -91,13 +91,13 @@
       <h3 style="color:white;">Untaken Requests</h3>
       <div class="" style="display:flex;flex-direction:row;">
         {{#each myOpenRequests}}
-        <div class="well" style="width:250px;margin:5px;">
-          <h5>For Date: {{this.date_needed}}</h5>
-          <p>Sent To: {{this.requested_for}}</p>
-          <p>For Address: {{this.property_address}}</p>
-          <p>Unit Number: {{this.unit_number}}</p>
-          <p>Needs Cleaning? {{this.needs_cleaning}}</p>
-          <p>Needs Repair? {{this.needs_repair}}</p>
+        <div class="well" style="width:250px;margin:5px;background-image: url('{{this.property_photo}}');background-size:cover;">
+          <h5 style="color:white;">For Date: {{this.date_needed}}</h5>
+          <p style="color:white;">Sent To: {{this.requested_for}}</p>
+          <p style="color:white;">For Address: {{this.property_address}}</p>
+          <p style="color:white;">Unit Number: {{this.unit_number}}</p>
+          <p style="color:white;">Needs Cleaning? {{this.needs_cleaning}}</p>
+          <p style="color:white;">Needs Repair? {{this.needs_repair}}</p>
         </div>
         {{/each}}
       </div>
