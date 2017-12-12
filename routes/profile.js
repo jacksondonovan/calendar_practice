@@ -185,10 +185,13 @@ router.get('/property_owner/:email',(req,res)=>{
               bookingsPending:pendingBookingsList.length,
               veryNextPending:pendingBookingsList[0],
               veryNextScheduling:dateUpcoming(pendingBookingsList[0].date_needed),
+              veryNextPropertyPhoto:pendingBookingsList[0].property_photo,
               secondVeryNextPending:pendingBookingsList[1],
               secondVeryNextScheduling:dateUpcoming(pendingBookingsList[1].date_needed),
+              secondVeryNextPropertyPhoto:pendingBookingsList[1].property_photo,
               thirdVeryNextPending:pendingBookingsList[2],
               thirdVeryNextScheduling:dateUpcoming(pendingBookingsList[2].date_needed),
+              thirdVeryNextPropertyPhoto:pendingBookingsList[2].property_photo,
               firstPicture:foundstaff.photo
             })
           })
