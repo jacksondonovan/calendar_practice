@@ -66,6 +66,13 @@ function getMyProperties(){
   return knex('property_addresses').select()
 }
 
+function updateBookingPropertyPhoto(imgvalue){
+  return knex('bookings').select().where('property_photo',imgvalue)
+  .update({
+    'property_photo':imgvalue
+  })
+}
+
 function addStaffMember(obj){
   return knex('service_staff').insert(obj)
 }
@@ -111,6 +118,7 @@ module.exports = {
   addBooking,
   addProperty,
   getMyProperties,
+  updateBookingPropertyPhoto,
   getMyBookings,
   getStaffMembers,
   addStaffMember,

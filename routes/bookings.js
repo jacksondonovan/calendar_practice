@@ -33,9 +33,12 @@ router.get('/property_owner/:company_name',(req,res)=>{
 })
 
 router.post('/create/property_owner/:email',(req,res)=>{
-  linkQuery.addBooking(req.body).then(()=>{
-    linkQuery.getPropertyOwner().where('email',req.params.email).first().then((userfound)=>{
-      res.redirect('/bookings/property_owner/' + userfound.company_name)
+  linkQuery.getMyProperties().where('property_address',req.body.property_address).first().then((foundProp)=>{
+    req.body.property_photo = foundProp.property_photo;
+    linkQuery.addBooking(req.body).then(()=>{
+      linkQuery.getPropertyOwner().where('email',req.params.email).first().then((userfound)=>{
+        res.redirect('/bookings/property_owner/' + userfound.company_name)
+      })
     })
   })
 })
