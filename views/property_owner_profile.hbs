@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
   <style>
     /* Remove the navbar's default rounded borders and increase the bottom margin */
     .navbar {
@@ -37,7 +38,7 @@
     }
   </style>
 </head>
-<body>
+<body ng-app="calendarpo">
 <nav class="navbar navbar-inverse" style="background-color:#33CCCC;">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -69,11 +70,12 @@
     <div class="col-sm-1">
 
     </div>
-    <div class=" well col-sm-3" style="background-color:#33CCCC;">
+    <div ng-controller="calendarCTRL as ctrl" class=" well col-sm-3" style="background-color:#33CCCC;">
       <div class="card" style="width: 20rem;padding-left:45px;">
         <div class="card-body">
           <h2 style="color:white;" align="center" class="card-title">{{completedBookings}}</h2>
-          <h4 style="color:white;" align="center" class="card-text">Bookings Fulfilled</h4>
+          <h4 style="color:white;" align="center" class="card-text">//ctrl.example//</h4>
+          <input ng-click="ctrl.changeName()" type="button">
         </div>
       </div>
     </div>
@@ -237,6 +239,6 @@
 <footer class="container-fluid text-center">
 
 </footer>
-
+<script type="text/javascript" src="/property_owner_calendar_module.js"></script>
 </body>
 </html>
